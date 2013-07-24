@@ -16,7 +16,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'capybara', '2.0.3'  # capybara-webkit works with this version
   gem 'capybara-webkit'
   gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
@@ -41,6 +41,8 @@ gem 'backbone-on-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+gem 'annotate'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
