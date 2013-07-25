@@ -11,10 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724141903) do
+ActiveRecord::Schema.define(version: 20130725104329) do
+
+  create_table "accounts", force: true do |t|
+    t.decimal  "total"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
+
+  create_table "roles", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  create_table "trips", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "trip_date",                 null: false
+    t.integer  "duration"
+    t.decimal  "price",       default: 0.0
+    t.integer  "bonus_point", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trips", ["user_id"], name: "index_trips_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
+    t.integer  "email",                               null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -27,7 +59,6 @@ ActiveRecord::Schema.define(version: 20130724141903) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "phone",                               null: false
     t.integer  "card_number"
     t.datetime "created_at"
     t.datetime "updated_at"

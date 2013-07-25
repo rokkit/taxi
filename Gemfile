@@ -44,6 +44,8 @@ gem 'backbone-on-rails'
 gem 'turbolinks'
 
 gem 'annotate'
+gem 'formtastic'
+gem 'twilio-ruby'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

@@ -1,0 +1,11 @@
+<%= semantic_form_for @model do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :account %>
+    <%= f.input :total %>
+    <%= f.input :user %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

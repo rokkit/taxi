@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.string :email,              :null => false, :default => ""
+      t.integer :email,              :null => false
       t.string :encrypted_password, :default => ""
 
       ## Recoverable
@@ -32,7 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Token authenticatable
       # t.string :authentication_token
-      t.integer :phone, unique: true, null: false
+      #t.integer :phone, unique: true, null: false
       t.integer :card_number, unique: true
 
 
