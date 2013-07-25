@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s)
   end
   after_create :generate_and_send_password_by_sms
-  before_create :create_account
 
   private
   def generate_and_send_password_by_sms
@@ -25,10 +24,4 @@ class User < ActiveRecord::Base
     update_attribute :password, password
   end
 
-  def create_account
-    self.roles << Role.where(name: "client").first_or_create
-    #if self.role? :client
-      self.account = Account.create total: 0
-    #end
-  end
 end

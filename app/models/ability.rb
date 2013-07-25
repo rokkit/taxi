@@ -11,6 +11,9 @@ class Ability
          can :read, :all
        elsif user.role? :operator
        elsif user.role? :client
+         can :manage, User do |u|
+           u == user
+         end
        end
     #
     # The first argument to `can` is the action you are giving the user 

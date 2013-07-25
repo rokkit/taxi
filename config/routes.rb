@@ -6,9 +6,10 @@ Taxi::Application.routes.draw do
   root "pages#index"
 
   scope "api" do
-  #resources :users
+    resources :users
    end
-    devise_for :users#, :controllers => { :registrations => "auth/registrations" }
+    devise_for :users#, skip: [:registrations]#, :controllers => { :registrations => "auth/registrations" }
+    devise_for :clients#, skip: :sessions#, :controllers => { :registrations => "auth/registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

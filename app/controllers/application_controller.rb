@@ -2,4 +2,25 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+ #helper_method :current_admin, :current_seller, :current_buyer
+               # :require_admin!, :require_seller!, :require_buyer!
+
+  def account_url
+    return new_user_session_url unless user_signed_in?
+    case current_user.class.name
+      when "Admin"
+        admin_root_url
+      when "Client"
+        client_root_url
+      else
+        root_url
+    end if user_signed_in?
+  end
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_in_path_for(resource)
+    user_path(resource)
+    #stored_location_for(resource) || account_url
+  end
 end

@@ -49,7 +49,12 @@
             <ul class="nav">
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li>
+            <% if user_signed_in? %>
+              <%= link_to current_user %>
+              <%= link_to "Выход",destroy_user_session_path, method: :delete %>
+            <% end %>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -64,7 +69,6 @@
               <li class="nav-header">Sidebar</li>
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

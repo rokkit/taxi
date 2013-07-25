@@ -40,11 +40,11 @@ gem "twitter-bootstrap-rails"
 gem 'backbone-on-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 gem 'annotate'
 gem 'formtastic'
 gem 'twilio-ruby'
+gem 'activerecord-session_store'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
