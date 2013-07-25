@@ -1,0 +1,13 @@
+<%= semantic_form_for @trip do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :user %>
+    <%= f.input :trip_date %>
+    <%= f.input :duration %>
+    <%= f.input :price %>
+    <%= f.input :bonus_point %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

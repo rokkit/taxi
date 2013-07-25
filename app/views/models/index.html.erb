@@ -1,0 +1,31 @@
+<h1>Listing models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Total</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+      <tr>
+        <td><%= model.account %></td>
+        <td><%= model.total %></td>
+        <td><%= model.user %></td>
+        <td><%= link_to 'Show', model %></td>
+        <td><%= link_to 'Edit', edit_model_path(model) %></td>
+        <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Model', new_model_path %>
