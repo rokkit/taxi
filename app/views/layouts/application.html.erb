@@ -47,14 +47,21 @@
           <a class="brand" href="#">Taxi</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li>
-            <% if user_signed_in? %>
-              <%= link_to current_user %>
-              <%= link_to "Выход",destroy_user_session_path, method: :delete %>
-            <% end %>
-              </li>
+        
+              <% if user_signed_in? %>
+                <% if current_user.class.name == "Admin" %>
+                  <li>
+                   <%= link_to "Домой", admin_index_path %>
+                  </li>
+                <% else %>
+                  <li>
+                <%= link_to current_user, current_user %>
+                </li>
+                 <% end %>
+                 <li>
+                  <%= link_to "Выход",destroy_user_session_path, method: :delete %>
+                 </li>
+               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -66,9 +73,19 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
+              <li class="nav-header">Меню</li>
+              <li>
+              <% if user_signed_in? %>
+                <% if current_user.class.name == "Admin" %>
+                   <%= link_to "Операторы", operators_path %>
+                   <%= link_to "Поездки", trips_path %>
+                   <%= link_to "Клиенты", clients_path %>
+                 <% elsif current_user.class.name == "Operator" %>
+                   <%= link_to "Поездки", trips_path %>
+                   <%= link_to "Клиенты", clients_path %>
+                 <% end %>
+              <% end %>
+              </li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

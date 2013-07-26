@@ -1,0 +1,21 @@
+<h1>На счету: <%= number_to_currency @client.account.total %></h1>
+<table>
+  <thead>
+    <th>Дата</th>
+    <th>Время</th>
+    <th>Стоиость</th>
+    <th>Потрачено бонусов</th>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+    <tr>
+      <td><%= trip.trip_date %></td>
+      <td><%= trip.duration %></td>
+      <td><%= number_to_currency trip.price %></td>
+      <td><%= trip.bonus_point %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

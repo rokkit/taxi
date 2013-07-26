@@ -40,9 +40,10 @@ gem 'cancan'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "twitter-bootstrap-rails"
 gem 'backbone-on-rails'
-
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 
 gem 'annotate'

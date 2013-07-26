@@ -10,17 +10,21 @@ class ApplicationController < ActionController::Base
     return new_user_session_url unless user_signed_in?
     case current_user.class.name
       when "Admin"
-        admin_root_url
+        admin_index_path
       when "Client"
-        client_root_url
+        client_path(current_user)
+      when "Operator"
+        trips_path
       else
         root_url
     end if user_signed_in?
   end
 
-  # Overwriting the sign_out redirect path method
   def after_sign_in_path_for(resource)
-    user_path(resource)
-    #stored_location_for(resource) || account_url
+   #user_path(resource)
+    #stored_location_for(resource) || 
+      account_url
+    #
+        #clients_path(current_user)
   end
 end

@@ -6,22 +6,24 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
   has_and_belongs_to_many :roles
   has_one :account
-  has_many :trips
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
   end
-  after_create :generate_and_send_password_by_sms
+  before_create :generate_and_send_password_by_sms
+  
 
   private
   def generate_and_send_password_by_sms
-    password = Devise.friendly_token.first(6)
-    client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
-    client.account.sms.messages.create(
-      from: APP['twilio']['from'],
-      to: "+#{self.email}",
-      body: "таксИ шашечкИ ВАШ пароль!: #{password}"
-    )
-    update_attribute :password, password
+    #gen_pass = Devise.friendly_token.first(6)
+    #client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
+    #client.account.sms.messages.create(
+      #from: APP['twilio']['from'],
+      #to: "+#{self.email}",
+      #body: "таксИ шашечкИ ВАШ пароль!: #{gen_pass}"
+    #)
+    #self.password = gen_pass
+    self.password = "password"
+    #update_attribute :password, password
   end
 
 end
