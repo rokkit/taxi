@@ -1,7 +1,7 @@
 <h2><%= @client.fio %></h2>
 <h2><%= @client.email %></h2>
 <h1>На счету: <%= number_to_currency @client.account.total %></h1>
-<table>
+<table class="table table-striped">
   <thead>
     <th>Дата</th>
     <th>Время</th>
