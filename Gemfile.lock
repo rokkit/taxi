@@ -12,6 +12,8 @@ GIT
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
 
+<<<<<<< HEAD
+=======
 GIT
   remote: https://github.com/francisd/rails3-jquery-autocomplete
   revision: 9884a40f2bb1a8fa3ffab445e6d2c74c3ee99a0d
@@ -19,6 +21,7 @@ GIT
     rails3-jquery-autocomplete (1.0.11)
       rails (>= 3.0)
 
+>>>>>>> ff4bd9d7d1aeb94727cf1d325fe21f672f21b31b
 GEM
   remote: http://rubygems.org/
   specs:
