@@ -1,7 +1,8 @@
 <h1>Поездки</h1>
 
-<%= link_to 'Добавить поездку', new_trip_path %>
-<table>
+<%= link_to 'Добавить поездку', new_trip_path, class: "btn" %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Клиент</th>
@@ -9,8 +10,6 @@
       <th>Длительность</th>
       <th>Стоимость</th>
       <th>Потрачено бонусов</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -23,9 +22,16 @@
         <td><%= trip.duration %></td>
         <td><%= trip.price %></td>
         <td><%= trip.bonus_point %></td>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Редактировать</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><%= link_to 'Показать', trip, class: "entypo-export" %></li>
+              <li><%= link_to 'Изменить', edit_trip_path(trip), class: "entypo-pencil" %></li>
+              <li><%= link_to 'Удалить', trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "entypo-cancel-squared" %></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
