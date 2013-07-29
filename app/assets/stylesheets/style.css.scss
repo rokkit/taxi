@@ -1,0 +1,27 @@
+@import "../scss/mixins";
+@import "../scss/variables";
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  margin-right: .5em;
+}
+
+//====== TRIP VIEW
+.trip-info {
+	strong {
+		display: inline-block;
+		width: 12em;
+	}
+}
+
+.trip-form {
+	.controls-row {
+		.input {
+			width: 8em;
+			float: left;
+		}
+	}	
+}

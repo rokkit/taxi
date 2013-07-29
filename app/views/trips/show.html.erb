@@ -1,3 +1,4 @@
+<div class="trip-info">
 
 <p>
   <strong>Клиент:</strong>
@@ -5,24 +6,26 @@
 </p>
 
 <p>
-  <strong>Trip date:</strong>
+  <strong>Дата поездки:</strong>
   <%= @trip.trip_date %>
 </p>
 
 <p>
-  <strong>Duration:</strong>
+  <strong>Длительность:</strong>
   <%= @trip.duration %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Цена:</strong>
   <%= @trip.price %>
 </p>
 
 <p>
-  <strong>Bonus point:</strong>
+  <strong>Количество баллов:</strong>
   <%= @trip.bonus_point %>
 </p>
 
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+</div>
+
+<%= link_to 'Редактировать', edit_trip_path(@trip), class: "entypo-pencil" %> |
+<%= link_to 'Назад', trips_path %>

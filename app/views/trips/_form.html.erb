@@ -1,6 +1,7 @@
 <%= semantic_form_for @trip do |f| %>
+  <div class="trip-form">
   <%= f.inputs do %>
-    <%= f.input :client, :as => :autocomplete, :url => autocomplete_client_email_trips_path, input_html: {name:"",:id_element => '#user_id_auto'},:update_elements => {} %>
+    <%= f.input :client, :as => :autocomplete, :url => autocomplete_client_email_trips_path, input_html: {name:"",:id_element => '#user_id_auto', :class => ""},:update_elements => {}, :label => "Клиент" %>
     <%# f.autocomplete_field :user, autocomplete_client_email_trips_path, :id_element => '#user_id_auto',:update_elements => {} %>
     <div id="user-form" style="display: none">
       <%= f.semantic_fields_for :client do |u|%>
@@ -9,14 +10,19 @@
       <% end %>
     </div>
     <%= f.hidden_field :client,name:"trip[client_id]", id: "user_id_auto" %>
-    <%= f.text_field :trip_date, id: "trip_date" %>
-    <%= f.text_field :trip_date, id: "trip_time" %>
-    <%= f.input :duration %>
-    <%= f.input :price %>
-    <%= f.input :bonus_point %>
+    
+    <%= f.text_field :trip_date, :as => :date_select, :label => "Дата", id: "trip_date", class: "input-medium" %>
+    <%= f.text_field :trip_date, :as => :time_select, :label => "Время", id: "trip_time", class: "input-mini" %>
+    
+    <div class="controls controls-row">
+      <%= f.input :duration, :label => "Длительность", :input_html => { :class => "input-mini" } %>
+      <%= f.input :price, :label => "Цена", :input_html => { :class => "input-mini" }  %>
+      <%= f.input :bonus_point, :label => "Очки", :input_html => { :class => "input-mini" } %>
+    </div>
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
+    <%= f.action :submit, :as => :input, :label => "Применить" %>
   <% end %>
+  </div>
 <% end %>
