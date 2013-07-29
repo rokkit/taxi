@@ -13,5 +13,6 @@
  *= require pickadate/classic.date
  *= require pickadate/classic.time
  *= require jquery.ui.all
+ *= require formtastic-bootstrap
  *= require_tree .
  */

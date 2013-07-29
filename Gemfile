@@ -48,6 +48,7 @@ gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquer
 
 gem 'annotate'
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem 'twilio-ruby'
 gem 'activerecord-session_store'
 

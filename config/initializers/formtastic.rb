@@ -1,8 +1,22 @@
 # encoding: utf-8
+require 'rails3-jquery-autocomplete'
 
+module FormtasticBootstrap
+  module Inputs
+    class AutocompleteInput < Formtastic::Inputs::AutocompleteInput
+      include Base
+
+      def to_html
+        bootstrap_wrapping do
+          builder.autocomplete_field(method, options.delete(:url), input_html_options)
+        end
+      end
+    end
+  end
+end
 # Set the default text field size when input is a string. Default is nil.
 # Formtastic::FormBuilder.default_text_field_size = 50
-
+Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder
 # Set the default text area height when input is a text. Default is 20.
 # Formtastic::FormBuilder.default_text_area_height = 5
 
