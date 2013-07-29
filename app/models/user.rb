@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   end
   before_create :generate_and_send_password_by_sms
   
+  accepts_nested_attributes_for :account
+  
 
   private
   def generate_and_send_password_by_sms

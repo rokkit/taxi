@@ -1,8 +1,7 @@
-<%= semantic_form_for @model do |f| %>
+<%= semantic_form_for @bonus_program do |f| %>
   <%= f.inputs do %>
-    <%= f.input :account %>
-    <%= f.input :total %>
-    <%= f.input :user %>
+    <%= f.input :human_name %>
+    <%= f.input :rate %>
   <% end %>
 
   <%= f.actions do %>

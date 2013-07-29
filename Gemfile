@@ -51,6 +51,7 @@ gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'twilio-ruby'
 gem 'activerecord-session_store'
+gem 'russian'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

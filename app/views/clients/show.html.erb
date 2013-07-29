@@ -1,6 +1,7 @@
 <h2><%= @client.fio %></h2>
 <h2><%= @client.email %></h2>
 <h1>На счету: <%= number_to_currency @client.account.total %></h1>
+<h2>Бонусная программа: <%= @client.bonus_program %></h2>
 <table>
   <thead>
     <th>Дата</th>

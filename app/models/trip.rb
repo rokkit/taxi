@@ -11,6 +11,6 @@ class Trip < ActiveRecord::Base
 
   private
   def windraw_bonus_points
-    #self.client.update
+    self.client.account.windraw_bonus_points bonus_point
   end
 end

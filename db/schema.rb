@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729103118) do
+ActiveRecord::Schema.define(version: 20130729124910) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20130729103118) do
   end
 
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
+
+  create_table "bonus_programs", force: true do |t|
+    t.string   "name"
+    t.decimal  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "human_name"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name",       null: false

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bonus_program.name %>
+  <%= Russian::transliterate @bonus_program.human_name %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @bonus_program.rate %>
+</p>
+
+<%= link_to 'Edit', edit_bonus_program_path(@bonus_program) %> |
+<%= link_to 'Back', bonus_programs_path %>
