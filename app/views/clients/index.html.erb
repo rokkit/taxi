@@ -7,7 +7,6 @@
     <tr>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -15,8 +14,8 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= link_to client, client %></td>
-        <td><%= link_to 'Изменить', edit_client_path(client) %></td>
-        <td><%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Изменить', edit_client_path(client), class: "btn btn-warning entypo-pencil" %> <%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger entypo-cancel-squared" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
