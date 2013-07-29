@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729083223) do
+ActiveRecord::Schema.define(version: 20130729103118) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total"

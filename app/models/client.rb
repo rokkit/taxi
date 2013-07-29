@@ -6,7 +6,7 @@ class Client < User
 
 
  def to_s
-   "Клиент +#{email}"
+   "Клиент #{fio}/ +#{email}"
  end
   private
   def create_account

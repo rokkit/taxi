@@ -16,6 +16,7 @@ class TripsController < ApplicationController
   # GET /trips/new
   def new
     @trip = Trip.new
+    @trip.client  = Client.new
   end
 
   # GET /trips/1/edit
@@ -25,8 +26,11 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
+   # raise trip_params[:client_attributes].inspect
+    unless trip_params[:client_id].blank?
+      trip_params.except! :client_attributes
+    end
     @trip = Trip.new(trip_params)
-
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
