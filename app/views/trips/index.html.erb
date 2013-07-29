@@ -1,6 +1,6 @@
 <h1>Поездки</h1>
 
-<%= link_to 'Добавить поездку', new_trip_path, class: "btn" %>
+<%= link_to 'Добавить поездку', new_trip_path, class: "btn btn-success entypo-plus-squared" %>
 
 <table class="table table-striped">
   <thead>
@@ -24,9 +24,9 @@
         <td><%= trip.bonus_point %></td>
         <td>
           <div class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Редактировать</a>
+            <a class="dropdown-toggle entypo-menu" data-toggle="dropdown" href="#">Редактировать</a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><%= link_to 'Показать', trip, class: "entypo-export" %></li>
+              <li><%= link_to 'Показать', trip, class: "entypo-book-open" %></li>
               <li><%= link_to 'Изменить', edit_trip_path(trip), class: "entypo-pencil" %></li>
               <li><%= link_to 'Удалить', trip, method: :delete, data: { confirm: 'Are you sure?' }, class: "entypo-cancel-squared" %></li>
             </ul>
