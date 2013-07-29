@@ -8,7 +8,7 @@
         <%= u.input :card_number  %>
       <% end %>
     </div>
-    <%= f.hidden_field :client, id: "user_id_auto" %>
+    <%= f.hidden_field :client,name:"trip[client_id]", id: "user_id_auto" %>
     <%= f.text_field :trip_date, id: "trip_date" %>
     <%= f.text_field :trip_date, id: "trip_time" %>
     <%= f.input :duration %>

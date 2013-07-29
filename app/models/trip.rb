@@ -2,6 +2,7 @@ class Trip < ActiveRecord::Base
   belongs_to :client
   validates :client, presence: true
   after_create :windraw_bonus_points
+  accepts_nested_attributes_for :client
   def initialize(attributes = {})
     super
     self.trip_date = DateTime.now
