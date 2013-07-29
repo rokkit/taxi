@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-<h1>На счету: <%= number_to_currency @user.account.total %></h1>
+<h1>На счету: <%= number_to_currency @client.account.total %></h1>
 <table>
   <thead>
     <th>Дата</th>
@@ -18,5 +17,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

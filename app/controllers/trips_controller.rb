@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  autocomplete :client, :email
 
   # GET /trips
   # GET /trips.json

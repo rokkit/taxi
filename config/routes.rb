@@ -1,14 +1,21 @@
 Taxi::Application.routes.draw do
-  resources :trips
 
-  resources :models
 
+  get "admin/index"
   root "pages#index"
 
   scope "api" do
-  #resources :users
-   end
-    devise_for :users#, :controllers => { :registrations => "auth/registrations" }
+    resources :users do
+      resources :trips
+    end
+    resources :clients
+    resources :operators
+    resources :trips do
+      get :autocomplete_client_email, :on => :collection
+    end
+  end
+    devise_for :users, skip: :registrations#, :controllers => { :registrations => "auth/registrations" }
+    devise_for :clients, skip: :sessions#, :controllers => { :registrations => "auth/registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
