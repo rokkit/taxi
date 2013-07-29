@@ -1,14 +1,14 @@
 class Trip < ActiveRecord::Base
-  belongs_to :user
-  validates :user, presence: true
+  belongs_to :client
+  validates :client, presence: true
   after_create :windraw_bonus_points
-  def initialize
+  def initialize(attributes = {})
     super
     self.trip_date = DateTime.now
   end
 
   private
   def windraw_bonus_points
-    self.user.update
+    #self.client.update
   end
 end

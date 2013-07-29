@@ -58,7 +58,8 @@
           }, function() {
             if(arguments[0].length == 0) {
               arguments[0] = []
-              arguments[0][0] = { id: "", label: "Клиент не найден" }
+              arguments[0][0] = { id: "", label: "Клиент не найден. Добавить?" }
+              $("#user-form").show();
             }
             jQuery(arguments[0]).each(function(i, el) {
               var obj = {};
@@ -85,7 +86,7 @@
         search: function() {
           // custom minLength
           var term = extractLast( this.value );
-          if ( term.length < 2 ) {
+          if ( term.length < 4 ) {
             return false;
           }
         },
