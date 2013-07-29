@@ -12,8 +12,6 @@ GIT
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
 
-<<<<<<< HEAD
-=======
 GIT
   remote: https://github.com/francisd/rails3-jquery-autocomplete
   revision: 9884a40f2bb1a8fa3ffab445e6d2c74c3ee99a0d
@@ -21,7 +19,6 @@ GIT
     rails3-jquery-autocomplete (1.0.11)
       rails (>= 3.0)
 
->>>>>>> ff4bd9d7d1aeb94727cf1d325fe21f672f21b31b
 GEM
   remote: http://rubygems.org/
   specs:
@@ -119,7 +116,7 @@ GEM
     fssm (0.2.10)
     hike (1.2.3)
     i18n (0.6.4)
-    jbuilder (1.4.2)
+    jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-rails (3.0.4)
@@ -178,7 +175,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rubyzip (0.9.9)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -215,7 +212,7 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    twilio-ruby (3.10.0)
+    twilio-ruby (3.10.1)
       builder (>= 2.1.2)
       jwt (>= 0.1.2)
       multi_json (>= 1.3.0)

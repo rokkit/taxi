@@ -21,7 +21,6 @@ capybara-*.html
 .rspec
 /.bundle
 /vendor/bundle/
-/vendor/**
 /log/*
 /tmp/*
 /public/uploads/tmp/
