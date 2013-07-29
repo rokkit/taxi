@@ -1,3 +1,5 @@
+<h2><%= @client.fio %></h2>
+<h2><%= @client.email %></h2>
 <h1>На счету: <%= number_to_currency @client.account.total %></h1>
 <table>
   <thead>
@@ -17,5 +19,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Изменить', edit_client_path(@client) %> |
+<%= link_to 'Назад', clients_path %>
