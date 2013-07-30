@@ -1,5 +1,9 @@
 class BonusProgramsController < ApplicationController
   before_action :set_bonus_program, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :load_resource, only: :create
+  load_and_authorize_resource
+  
 
   # GET /bonus_programs
   # GET /bonus_programs.json
@@ -70,5 +74,8 @@ class BonusProgramsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bonus_program_params
       params.require(:bonus_program).permit!
+    end
+    def load_resource
+      @bonus_program= BonusProgram.new(bonus_program_params)
     end
 end
