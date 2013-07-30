@@ -6,6 +6,8 @@ class Client < User
 
  before_create :create_account, :assign_bonus_program
 
+  accepts_nested_attributes_for :account
+
 
  def to_s
    "#{fio} (+#{email})"
@@ -17,7 +19,7 @@ class Client < User
   end
 
   def assign_bonus_program
-    self.bonus_program = BonusProgram.where(name: "default").first_or_create
+    self.bonus_program = BonusProgram.where(name: "Bazovaya").first_or_create
   end
 
 end
