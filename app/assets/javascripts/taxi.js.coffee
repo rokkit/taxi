@@ -6,7 +6,16 @@ window.Taxi =
   initialize: -> #alert 'Hello from Backbone!'
 
 $(document).ready ->
-  $("#trip_date").pickadate()
+  $("#trip_date").pickadate
+    monthsFull: ['Январь', 'February', 'March', 'April', 'May', 'June', 'Июль', 'Август', 'September', 'October', 'November', 'December']
+    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    weekdaysShort: ['Вск', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+    showMonthsShort: false
+    showWeekdaysFull: false
+    firstDay: "Пон"
+    today: 'Сегодня',
+    clear: 'Сброс',
   $("#trip_time").pickatime()
   $('#trip_user_id').on 'railsAutocomplete.select', (event, data) ->
     console.log "au"

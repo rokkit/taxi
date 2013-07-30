@@ -1,4 +1,6 @@
 class OperatorsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :load_resource, only: :create
  load_and_authorize_resource
   before_filter :authenticate_user!
 
@@ -31,7 +33,7 @@ class OperatorsController < ApplicationController
 
     respond_to do |format|
       if @operator.save
-        format.html { redirect_to @operator, notice: 'Operator was successfully created.' }
+        format.html { redirect_to @operator, notice: 'Приглашение оператору успешно отсправлено' }
         format.json { render action: 'show', status: :created, location: @operator }
       else
         format.html { render action: 'new' }
@@ -45,7 +47,7 @@ class OperatorsController < ApplicationController
   def update
     respond_to do |format|
       if @operator.update(operator_params)
-        format.html { redirect_to @operator, notice: 'Operator was successfully updated.' }
+        format.html { redirect_to @operator, notice: 'Изменения сохранены' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,5 +75,8 @@ class OperatorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def operator_params
       params.require(:operator).permit(:email)
+    end
+    def load_resource
+      @operator = Operator.new(operator_params)
     end
 end

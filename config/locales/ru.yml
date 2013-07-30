@@ -16,3 +16,5 @@ ru:
         price: "Стоимость"
         client: "Клиент"
         bonus_point: "Баллы"
+      account:
+        total: "Баллы на счету"

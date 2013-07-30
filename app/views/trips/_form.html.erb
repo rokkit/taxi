@@ -11,7 +11,7 @@
     </div>
     <%= f.hidden_field :client,name:"trip[client_id]", id: "user_id_auto" %>
     
-    <%= f.text_field :trip_date, :placeholder => "Дата", id: "trip_date", class: "input-medium" %>
+    <%= f.text_field :trip_date, :placeholder => "Дата", id: "trip_date", class: "input-medium", value: DateTime.now.strftime("%d %m, %Y")  %>
     <%= f.text_field :trip_date, :placeholder => "Время", id: "trip_time", class: "input-mini" %>
     
     <div class="controls controls-row">

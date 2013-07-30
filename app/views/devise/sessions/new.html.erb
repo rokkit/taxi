@@ -20,7 +20,7 @@
     <div class="controls">
     	<% if devise_mapping.rememberable? -%>
 	    <label class="checkbox">
-	    	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+	    	<%= f.check_box :remember_me %> <%= f.label :remember_me, "Запомнить" %>
 	    </label>
 	    <% end -%>
 	    <%= f.submit "Вход", class: "btn" %>
