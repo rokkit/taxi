@@ -19,7 +19,7 @@ $(document).ready ->
   $("#trip_time").pickatime()
   $('#trip_user_id').on 'railsAutocomplete.select', (event, data) ->
     console.log "au"
-  $('.table').dataTable
+  $('.datatable').dataTable
     "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
     "sPaginationType": "bootstrap"
     oLanguage:
