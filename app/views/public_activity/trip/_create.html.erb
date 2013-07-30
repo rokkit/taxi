@@ -1,0 +1,6 @@
+добавил поездку для клиента
+<% if activity.trackable %>
+  <%= link_to "#{activity.trackable.client}", activity.trackable.client %>
+<% else %>
+  которая была удалена
+<% end %>

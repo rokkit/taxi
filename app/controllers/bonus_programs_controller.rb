@@ -28,7 +28,7 @@ class BonusProgramsController < ApplicationController
 
     respond_to do |format|
       if @bonus_program.save
-        format.html { redirect_to @bonus_program, notice: 'Bonus program was successfully created.' }
+        format.html { redirect_to @bonus_program, notice: 'Бонусная программа успешно добавлена' }
         format.json { render action: 'show', status: :created, location: @bonus_program }
       else
         format.html { render action: 'new' }

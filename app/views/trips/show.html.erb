@@ -2,7 +2,7 @@
 
 <p>
   <strong>Клиент:</strong>
-  <%= @trip.client %>
+  <%= link_to @trip.client, @trip.client %>
 </p>
 
 <p>
@@ -23,6 +23,10 @@
 <p>
   <strong>Количество баллов:</strong>
   <%= @trip.bonus_point %>
+</p>
+<p>
+  <strong>Получено балов:</strong>
+  <%= @trip.added_bonus %>
 </p>
 
 </div>

@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729134944) do
+ActiveRecord::Schema.define(version: 20130730081013) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total"
-    t.integer  "user_id"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
+  add_index "accounts", ["client_id"], name: "index_accounts_on_client_id"
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20130729134944) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"
+    t.integer  "added_bonus"
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id"
