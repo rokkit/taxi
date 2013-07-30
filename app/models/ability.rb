@@ -8,10 +8,13 @@ class Ability
        if user.role? :super_admin
          can :manage, :all
        elsif user.role? :admin
-         can :read, :all
+         can :manage, :all
        elsif user.role? :operator
+         can :manage, Trip
+         can :read, Operator
+         can :manage, Client
        elsif user.role? :client
-         can :manage, User do |u|
+         can [:show], Client do |u|
            u == user
          end
        end

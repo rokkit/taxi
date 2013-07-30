@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @bonus_program.name %>
-  <%= Russian::transliterate @bonus_program.human_name %>
+  <strong>Наименование:</strong>
+  <%= @bonus_program.human_name %>
 </p>
 
 <p>
-  <strong>Rate:</strong>
+<strong>Коэффициент:</strong>
   <%= @bonus_program.rate %>
 </p>
 

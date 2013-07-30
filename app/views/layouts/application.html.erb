@@ -77,6 +77,7 @@
               <li>
               <% if user_signed_in? %>
                 <% if current_user.class.name == "Admin" %>
+                   <%= link_to "Журнал действий", activities_path %>
                    <%= link_to "Операторы", operators_path %>
                    <%= link_to "Поездки", trips_path %>
                    <%= link_to "Клиенты", clients_path %>

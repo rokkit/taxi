@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include PublicActivity::StoreController
+
  #helper_method :current_admin, :current_seller, :current_buyer
                # :require_admin!, :require_seller!, :require_buyer!
 
@@ -26,5 +28,9 @@ class ApplicationController < ActionController::Base
       account_url
     #
         #clients_path(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => "Доступ запрещен"
   end
 end

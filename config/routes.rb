@@ -1,6 +1,7 @@
 Taxi::Application.routes.draw do
 
 
+  resources :activities
   resources :bonus_programs
 
   get "admin/index"

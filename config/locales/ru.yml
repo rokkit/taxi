@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    model:
+      client: "Клиент"
+    attributes:
+      operator:
+        email: "Телефон"
+      client:
+        email: "Телефон"
+      bonus_program:
+        human_name: "Наименование"
+        rate: "Коэффициент"

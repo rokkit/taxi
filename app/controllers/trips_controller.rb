@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
+
+  before_filter :authenticate_user!
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :load_trip, only: :create
   autocomplete :client, :email
+  load_and_authorize_resource
 
   # GET /trips
   # GET /trips.json
@@ -26,14 +30,17 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-   # raise trip_params[:client_attributes].inspect
     unless trip_params[:client_id].blank?
       trip_params.except! :client_attributes
     end
+
+    #raise trip_params.inspect
+    #raise trip_params[:client_attributes].inspect
+
     @trip = Trip.new(trip_params)
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to @trip, notice: 'Поездка успешно добавлена' }
         format.json { render action: 'show', status: :created, location: @trip }
       else
         format.html { render action: 'new' }
@@ -47,7 +54,7 @@ class TripsController < ApplicationController
   def update
     respond_to do |format|
       if @trip.update(trip_params)
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
+        format.html { redirect_to @trip, notice: 'Поездка успешно обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,6 +81,9 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit!#(:client, :trip_date, :duration, :price, :bonus_point)
+      params.require(:trip).permit([:client_id, :trip_date, :duration, :price, :bonus_point, :client_attributes])
+    end
+    def load_trip
+    @trip = Trip.new(trip_params)
     end
 end
