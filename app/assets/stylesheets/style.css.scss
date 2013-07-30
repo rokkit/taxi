@@ -9,6 +9,18 @@
   margin-right: .5em;
 }
 
+//====== LOGIN FORM
+.login-form {
+	.phone {
+		.input-prepend {
+			margin-left: 20px;
+		}
+		input {
+			width: 180px;
+		}
+	}
+}
+
 //====== TRIP VIEW
 .trip-info {
 	strong {

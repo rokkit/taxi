@@ -1,12 +1,12 @@
-<h1>Listing bonus_programs</h1>
+<h1>Бонусные программы</h1>
 
-<table>
+<%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Rate</th>
-      <th></th>
-      <th></th>
+      <th>Наименование</th>
+      <th>Коэффициент</th>
       <th></th>
     </tr>
   </thead>
@@ -16,14 +16,17 @@
       <tr>
         <td><%= bonus_program.name %></td>
         <td><%= bonus_program.rate %></td>
-        <td><%= link_to 'Show', bonus_program %></td>
-        <td><%= link_to 'Edit', edit_bonus_program_path(bonus_program) %></td>
-        <td><%= link_to 'Destroy', bonus_program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="dropdown">
+            <a class="dropdown-toggle entypo-menu" data-toggle="dropdown" href="#">Редактировать</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><%= link_to 'Показать', bonus_program, class: "entypo-book-open" %></li>
+              <li><%= link_to 'Редактировать', edit_bonus_program_path(bonus_program), class: "entypo-pencil" %></li>
+              <li><%= link_to 'Удалить', bonus_program, method: :delete, data: { confirm: 'Вы уверены?' }, class: "entypo-cancel-squared" %></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Bonus program', new_bonus_program_path %>
