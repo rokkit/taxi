@@ -2,10 +2,14 @@
   <div class="span8">
     <h1><%= @client.fio %></h1>
     <h3 class="entypo-phone">+<%= @client.email %></h3>
-    <p><span class="label label-warning">Бонусная программа: <%= @client.bonus_program %></span></p>
+    <p>
+      <span class="label label-warning">Бонусная программа: <%= @client.bonus_program %></span>
+    </p>
   </div>
   <div class="span4">
-    <div class="well well-smal"><h3>На счету: <span class="badge badge-info"><%= number_to_currency @client.account.total %></span></h3></div>
+    <div class="well well-smal">
+      <h3>На счету: <span class="badge badge-info"><%= number_to_currency @client.account.total %></span></h3>
+    </div>
   </div>
 </div>
 
@@ -20,7 +24,7 @@
   <tbody>
     <% @trips.each do |trip| %>
     <tr>
-      <td><%= trip.trip_date %></td>
+      <td><%= trip.trip_date.to_formatted_s(:long) %></td>
       <td><%= trip.duration %></td>
       <td><%= number_to_currency trip.price %></td>
       <td><%= trip.bonus_point %></td>
