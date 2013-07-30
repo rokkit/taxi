@@ -2,14 +2,14 @@
   <div class="body">
     <% if activity.trackable %>
     <div class="mega-icon" style="background-image: url(/assets/post.create.svg)"></div>
-    <abbr class="timeago" title="2013-07-17 13:14:46 UTC"><%= activity.created_at.strftime("%F %H:%M") %></abbr> 
+    <abbr class="timeago"><%= activity.created_at.strftime("%F %H:%M") %></abbr> 
     <div class="title">
       <%= activity.owner %> добавил поездку для клиента <%= link_to "#{activity.trackable.client}", activity.trackable.client %>
     </div>
-     <div class="details">
-
-    <%= link_to activity.trackable, activity.trackable %></div>
+    <div class="details">
+    	<%= link_to activity.trackable, activity.trackable %>
+    </div>
     <% end %>
-     </div>
+    </div>
 </div>
 
