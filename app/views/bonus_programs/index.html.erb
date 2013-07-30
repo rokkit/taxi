@@ -2,31 +2,38 @@
 
 <%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Наименование</th>
-      <th>Коэффициент</th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row-fluid">
+  <div class="span6">
 
-  <tbody>
-    <% @bonus_programs.each do |bonus_program| %>
-      <tr>
-        <td><%= bonus_program %></td>
-        <td><%= bonus_program.rate %></td>
-        <td>
-          <div class="dropdown">
-            <a class="dropdown-toggle entypo-menu" data-toggle="dropdown" href="#">Редактировать</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><%= link_to 'Показать', bonus_program, class: "entypo-book-open" %></li>
-              <li><%= link_to 'Редактировать', edit_bonus_program_path(bonus_program), class: "entypo-pencil" %></li>
-              <li><%= link_to 'Удалить', bonus_program, method: :delete, data: { confirm: 'Вы уверены?' }, class: "entypo-cancel-squared" %></li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>Коэффициент</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @bonus_programs.each do |bonus_program| %>
+          <tr>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-small"><%= bonus_program %></button>
+                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                  <!-- <li><%= link_to 'Показать', bonus_program, class: "entypo-book-open" %></li> -->
+                  <li><%= link_to 'Редактировать', edit_bonus_program_path(bonus_program), class: "entypo-pencil" %></li>
+                  <li><%= link_to 'Удалить', bonus_program, method: :delete, data: { confirm: 'Вы уверены?' }, class: "entypo-cancel-squared" %></li>
+                </ul>
+              </div>
+            </td>
+            <td><%= bonus_program.rate %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
