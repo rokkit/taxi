@@ -1,7 +1,5 @@
 <h1>Бонусные программы</h1>
 
-<%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
-
 <div class="row-fluid">
   <div class="span6">
 
@@ -18,7 +16,7 @@
           <tr>
             <td>
               <div class="btn-group">
-                <button class="btn"><%= bonus_program %></button>
+                <button class="btn"><strong><%= bonus_program %></strong></button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
@@ -37,3 +35,5 @@
 
   </div>
 </div>
+
+<%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
