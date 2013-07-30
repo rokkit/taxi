@@ -24,7 +24,7 @@
   <tbody>
     <% @trips.each do |trip| %>
     <tr>
-      <td><%= trip.trip_date.to_formatted_s(:long) %></td>
+      <td><%= Russian::strftime trip.trip_date, "%d %B %Y"%></td>
       <td><%= trip.duration %></td>
       <td><%= number_to_currency trip.price %></td>
       <td><%= trip.bonus_point %></td>

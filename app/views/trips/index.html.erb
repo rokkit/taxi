@@ -18,7 +18,7 @@
     <% @trips.each do |trip| %>
       <tr>
         <td><%= trip.client %></td>
-        <td><%= trip.trip_date %></td>
+        <td><%=Russian::strftime trip.trip_date, "%d %B %Y" %></td>
         <td><%= trip.duration %></td>
         <td><%= trip.price %></td>
         <td><%= trip.bonus_point %></td>

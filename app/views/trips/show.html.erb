@@ -7,7 +7,7 @@
 
 <p>
   <strong>Дата поездки:</strong>
-  <%= @trip.trip_date %>
+  <%=Russian::strftime @trip.trip_date, "%d %B %Y"  %>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 </p>
 
 <p>
-  <strong>Количество баллов:</strong>
+  <strong>Использовано баллов:</strong>
   <%= @trip.bonus_point %>
 </p>
 <p>
