@@ -1,2 +1,7 @@
 <h1>Журнал действий</h1>
-<%= render_activities(@activities) %>
+<% @activities.each do |activity| %>
+  <div class="activity">
+    <%= activity.owner activity.owner if activity.owner %>
+    <%= render_activity activity %>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@ class Client < User
 
   has_many :trips
   belongs_to :bonus_program
+  has_one :account
 
  before_create :create_account, :assign_bonus_program
 
