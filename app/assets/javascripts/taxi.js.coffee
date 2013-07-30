@@ -11,6 +11,10 @@ $(document).ready ->
   $('#trip_user_id').on 'railsAutocomplete.select', (event, data) ->
     console.log "au"
 
+  #$('.nav-list li').click ->
+    #$('nav-list li').removeClass("active")
+    #$(this).addClass("active")
+
 
 
 

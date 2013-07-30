@@ -1,7 +1,8 @@
 class ClientsController < ApplicationController
 
-  load_and_authorize_resource
   before_filter :authenticate_user!
+  before_filter :load_resource, only: :create
+  load_and_authorize_resource
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
@@ -32,7 +33,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to @client, notice: 'Клиент успешно добавлен' }
         format.json { render action: 'show', status: :created, location: @client }
       else
         format.html { render action: 'new' }
@@ -46,7 +47,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to @client, notice: 'Информация успешно обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,5 +75,8 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params[:client].permit!
+    end
+    def load_resource
+      @client= Client.new(client_params)
     end
 end

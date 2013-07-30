@@ -5,13 +5,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
   has_and_belongs_to_many :roles
-  has_one :account
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
   end
   before_create :generate_and_send_password_by_sms
   
-  accepts_nested_attributes_for :account
   
 
   private
