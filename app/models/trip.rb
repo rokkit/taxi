@@ -16,6 +16,10 @@ class Trip < ActiveRecord::Base
     #self.client = Client.new
   end
 
+  def to_s
+    "Поездка №#{self.id}"
+  end
+
   private
   def windraw_bonus_points
     self.client.account.windraw_bonus_points bonus_point

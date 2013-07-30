@@ -1,7 +1,7 @@
 <h1>Журнал действий</h1>
 <% @activities.each do |activity| %>
   <div class="activity">
-    <%= activity.owner activity.owner if activity.owner %>
+    <%# activity.owner activity.owner if activity.owner %>
     <%= render_activity activity %>
   </div>
 <% end %>
