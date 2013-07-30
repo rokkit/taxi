@@ -1,8 +1,8 @@
 @import "../scss/mixins";
 @import "../scss/variables";
 
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-
+/*@import url(http://weloveiconfonts.com/api/?family=entypo);*/
+/*@import "entypo"*/
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
