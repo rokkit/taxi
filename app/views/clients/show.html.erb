@@ -1,7 +1,14 @@
-<h2><%= @client.fio %></h2>
-<h2><%= @client.email %></h2>
-<h1>На счету: <%= number_to_currency @client.account.total %></h1>
-<h2>Бонусная программа: <%= @client.bonus_program %></h2>
+<div class="row-fluid">
+  <div class="span8">
+    <h1><%= @client.fio %></h1>
+    <h3 class="entypo-phone">+<%= @client.email %></h3>
+    <p><span class="label label-warning">Бонусная программа: <%= @client.bonus_program %></span></p>
+  </div>
+  <div class="span4">
+    <div class="well well-smal"><h3>На счету: <span class="badge badge-info"><%= number_to_currency @client.account.total %></span></h3></div>
+  </div>
+</div>
+
 <table>
 <table class="table table-striped">
   <thead>
