@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     return new_user_session_url unless user_signed_in?
     case current_user.class.name
       when "Admin"
-        admin_index_path
+        activities_path
       when "Client"
         client_path(current_user)
       when "Operator"

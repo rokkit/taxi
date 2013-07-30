@@ -2,14 +2,14 @@
 
 <%= form_for(resource, as: resource_name, html: { class: "login-form form-horizontal"}, url: session_path(resource_name)) do |f| %>
   <div class="phone control-group">
-  	<%= f.label :email, class: "control-label" %>
+  	<%= f.label :email,"Телефон", class: "control-label" %>
   	<div class="input-prepend">
-	  	<span class="add-on">+</span><%= f.number_field :email, :autofocus => true %>
+	  	<span class="add-on">+</span><%= f.phone_field :email, :autofocus => true %>
   	</div>
   </div>
 
   <div class="password control-group">
-  	<%= f.label :password, class: "control-label"  %>
+  	<%= f.label :password,"Пароль", class: "control-label"  %>
   	<div class="controls">
 	  	<%= f.password_field :password %>
 	  </div>
@@ -23,7 +23,7 @@
 	    	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
 	    </label>
 	    <% end -%>
-	    <%= f.submit "Sign in", class: "btn" %>
+	    <%= f.submit "Вход", class: "btn" %>
 
 	    <div class="links">
 	    	<%= render "devise/shared/links" %>
