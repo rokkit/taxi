@@ -18,8 +18,8 @@
           <tr>
             <td>
               <div class="btn-group">
-                <button class="btn btn-small"><%= bonus_program %></button>
-                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+                <button class="btn"><%= bonus_program %></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -29,7 +29,7 @@
                 </ul>
               </div>
             </td>
-            <td><%= bonus_program.rate %></td>
+            <td><strong><%= bonus_program.rate %></strong></td>
           </tr>
         <% end %>
       </tbody>
