@@ -1,12 +1,13 @@
 <%= semantic_form_for @trip do |f| %>
   <div class="trip-form">
   <%= f.inputs do %>
-    <%= f.input :client, :as => :autocomplete, :url => autocomplete_client_email_trips_path, input_html: {name:"",:id_element => '#user_id_auto', :class => ""},:update_elements => {} %>
+    <%= f.input :client, :as => :autocomplete, :url => autocomplete_client_email_trips_path, input_html: {name:"",:id_element => '#user_id_auto', :class => "", id: "user_id_auto_phone"},:update_elements => {} %>
     <%# f.autocomplete_field :user, autocomplete_client_email_trips_path, :id_element => '#user_id_auto',:update_elements => {} %>
     <div id="user-form" style="display: none">
       <%= f.semantic_fields_for :client do |u|%>
         <%= u.input :email %>
         <%= u.input :card_number  %>
+        <%= u.input :fio %>
       <% end %>
     </div>
     <%= f.hidden_field :client,name:"trip[client_id]", id: "user_id_auto" %>

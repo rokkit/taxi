@@ -59,6 +59,7 @@
             if(arguments[0].length == 0) {
               arguments[0] = []
               arguments[0][0] = { id: "", label: "Клиент не найден. Добавить?" }
+              $("#trip_client_attributes_email").val($("#user_id_auto_phone").val())
               $("#user-form").show();
             }
             jQuery(arguments[0]).each(function(i, el) {

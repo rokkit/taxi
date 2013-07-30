@@ -31,7 +31,7 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     unless trip_params[:client_id].blank?
-      trip_params.except! :client_attributes
+     # trip_params.except! :client_attributes
     end
 
     #raise trip_params.inspect
@@ -81,7 +81,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit([:client_id, :trip_date, :duration, :price, :bonus_point, :client_attributes])
+      params.require(:trip).permit!#([:client_id, :trip_date, :duration, :price, :bonus_point, :client_attributes])
     end
     def load_trip
     @trip = Trip.new(trip_params)

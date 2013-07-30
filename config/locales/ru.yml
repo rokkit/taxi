@@ -5,9 +5,12 @@ ru:
     attributes:
       operator:
         email: "Телефон"
+        fio: "Ф.И.О."
       client:
         email: "Телефон"
         bonus_program: "Бонусная программа"
+        card_number: "Номер бонусной карты"
+        fio: "Ф.И.О."
       bonus_program:
         human_name: "Наименование"
         rate: "Коэффициент"
