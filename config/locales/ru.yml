@@ -11,3 +11,8 @@ ru:
       bonus_program:
         human_name: "Наименование"
         rate: "Коэффициент"
+      trip:
+        duration: "Длительность"
+        price: "Стоимость"
+        client: "Клиент"
+        bonus_point: "Баллы"
