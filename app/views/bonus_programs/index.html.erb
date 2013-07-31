@@ -1,7 +1,5 @@
 <h1>Бонусные программы</h1>
 
-<%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
-
 <div class="row-fluid">
   <div class="span6">
 
@@ -18,8 +16,8 @@
           <tr>
             <td>
               <div class="btn-group">
-                <button class="btn btn-small"><%= bonus_program %></button>
-                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+                <button class="btn"><strong><%= bonus_program %></strong></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -29,7 +27,7 @@
                 </ul>
               </div>
             </td>
-            <td><%= bonus_program.rate %></td>
+            <td><strong><%= bonus_program.rate %></strong></td>
           </tr>
         <% end %>
       </tbody>
@@ -37,3 +35,5 @@
 
   </div>
 </div>
+
+<%= link_to 'Добавить бонусную программу', new_bonus_program_path, class: "btn btn-success entypo-plus-squared" %>
