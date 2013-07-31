@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.integer :email,              :null => false
+      t.integer :email,              :null => false, :limit => 11
       t.string :encrypted_password, :default => ""
 
       ## Recoverable
