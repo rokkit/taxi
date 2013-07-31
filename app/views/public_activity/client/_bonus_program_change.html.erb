@@ -1,0 +1,16 @@
+<div class="activity">
+  <div class="body">
+    <% if activity.trackable %>
+    <div class="mega-icon" style="background-image: url(/assets/bonus.change.svg)"></div>
+    <abbr class="timeago"><%= activity.created_at.strftime("%F %H:%M") %></abbr> 
+    <div class="title">
+      <%= activity.owner %> сменил бонусную программу клиенту <%= link_to "#{activity.trackable}", activity.trackable %> 
+    </div>
+    <div class="details">
+    	на программу "<%= link_to activity.trackable.bonus_program, activity.trackable.bonus_program %>"
+    </div>
+    <% end %>
+    </div>
+</div>
+
+
