@@ -55,6 +55,9 @@ gem 'activerecord-session_store'
 gem 'russian'
 gem 'public_activity', git: 'https://github.com/pokonski/public_activity.git'
 
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

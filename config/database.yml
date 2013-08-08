@@ -23,3 +23,15 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+mssql:
+  adapter: sqlserver
+  mode: dblib
+  dataserver: sql2008ds   # Name from freetds.conf, host or instance 'localhost\SQLEXPRESS'
+  host: mydb.net          # Used if dataserver is blank.
+  port: 1433              # Used if host present. Default is 1433.
+  database: taxi_bonus
+  username: sa
+  password: secret
+  timeout: 5000
+  azure: true
