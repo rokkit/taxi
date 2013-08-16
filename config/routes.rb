@@ -11,7 +11,9 @@ Taxi::Application.routes.draw do
     resources :users do
       resources :trips
     end
-    resources :clients
+    resources :clients do
+      get :autocomplete_natural_person_name, on: :collection
+    end
     resources :operators
     resources :trips do
       get :autocomplete_client_email, :on => :collection

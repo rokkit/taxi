@@ -11,6 +11,7 @@ ru:
         bonus_program: "Бонусная программа"
         card_number: "Номер бонусной карты"
         fio: "Ф.И.О."
+        natural_person: "Клиент Taxi Maxima"
       bonus_program:
         human_name: "Наименование"
         rate: "Коэффициент"
@@ -19,5 +20,6 @@ ru:
         price: "Стоимость"
         client: "Клиент"
         bonus_point: "Баллы"
+        orders: "Заказ"
       account:
         total: "Баллы на счету"

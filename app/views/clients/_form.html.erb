@@ -1,5 +1,8 @@
 <%= semantic_form_for @client do |f| %>
   <%= f.inputs do %>
+    <%= f.label :natural_person_sugg, 'Клиент' %>
+    <%= autocomplete_field_tag :natural_person_sugg,'', autocomplete_natural_person_name_clients_path,:id_element => '#client_natural_person', multiple: true, 'date-delimiter' => '\s' %>
+    <%= hidden_field_tag 'client[natural_person]' %>
     <%= f.input :email, :label => "Номер телефона" %>
     <%= f.input :fio, :label => "Ф.И.О." %>
     <%= f.input :card_number, :label => "Номер карты" %>

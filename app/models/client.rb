@@ -3,6 +3,8 @@ class Client < User
   has_many :trips
   belongs_to :bonus_program
   has_one :account
+  belongs_to :natural_person
+
 
   after_save :bonus_program_changed_callback#, :if => bonus_program.changed?
  before_create :create_account, :assign_bonus_program
@@ -12,6 +14,9 @@ class Client < User
   tracked
 
   tracked owner: ->(controller, model) { controller && controller.current_user } 
+  #def natural_person
+    #NaturalPerson.find natural_person_id
+  #end
 
  def to_s
    "#{fio} (+#{email})"

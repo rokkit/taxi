@@ -1,23 +1,17 @@
 <div class="trip-info">
 
-<p>
-  <strong>Клиент:</strong>
-  <%= link_to @trip.client, @trip.client %>
-</p>
+
 
 <p>
   <strong>Дата поездки:</strong>
-  <%=Russian::strftime @trip.trip_date, "%d %B %Y"  %>
+  <%=Russian::strftime @trip.orders.datetime_from, "%d %B %Y"  %>
 </p>
 
-<p>
-  <strong>Длительность:</strong>
-  <%= @trip.duration %>
-</p>
+
 
 <p>
   <strong>Цена:</strong>
-  <%= @trip.price %>
+  <%= @trip.orders.cost %>
 </p>
 
 <p>

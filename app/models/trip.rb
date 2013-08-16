@@ -1,8 +1,8 @@
 class Trip < ActiveRecord::Base
   belongs_to :client
-  validates :client, presence: true
-  after_create :windraw_bonus_points
-  before_create :add_bonus_points
+  belongs_to :orders, class_name: "Orders"
+  #after_create :windraw_bonus_points
+  #before_create :add_bonus_points
   accepts_nested_attributes_for :client,reject_if: proc { |attributes| attributes['email'].blank? }
 
   include PublicActivity::Model
@@ -10,9 +10,10 @@ class Trip < ActiveRecord::Base
 
   tracked owner: ->(controller, model) { controller && controller.current_user }
 
+  validates :orders, presence: true
+
   def initialize(attributes = {})
     super
-    self.trip_date = DateTime.now
     #self.client = Client.new
   end
 

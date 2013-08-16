@@ -1,0 +1,29 @@
+<% if can? :manage, @client %>
+  <%= link_to "Добавить поездку", new_trip_path(client: @client) %>
+<% end %>
+
+<table>
+<table class="table table-striped">
+  <thead>
+    <th>Дата</th>
+    <th>Длина маршрута</th>
+    <th>Стоимость</th>
+    <th>Потрачено бонусов</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.datetime_from %></td>
+      <td><%= order.route_length %></td>
+      <td><%= order.cost_plan %></td>
+      <td><%= order.trip.try(:bonus_point) %></td>
+      <td>
+        <% if can? :manage, @client and order.trip.try(:bonus_point).nil? %>
+          <%= link_to "Оплатить бонусами", new_trip_path(client: @client) %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

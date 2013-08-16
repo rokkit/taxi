@@ -1,10 +1,12 @@
 class ClientsController < ApplicationController
-
+  autocomplete :natural_person, :name, display_value: :full_name, scoped: [:search_by_full_name]
   before_filter :authenticate_user!
   before_filter :load_resource, only: :create
   load_and_authorize_resource
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-
+  #def get_autocomplete_items(parameters)
+    #super(parameters).search_by_full_name params[:q]
+  #end
   # GET /clients
   # GET /clients.json
   def index
@@ -14,7 +16,10 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @trips = Trip.all
+    #@trips = Trip.all
+    @orders = @client.natural_person.orders
+    #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
+    @total_bonus = Orders::calculate_total_bonus @client
   end
 
   # GET /clients/new
@@ -71,6 +76,8 @@ class ClientsController < ApplicationController
     def set_client
       @client = Client.find(params[:id])
     end
+    
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params

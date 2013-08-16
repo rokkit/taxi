@@ -4,7 +4,9 @@
     <div class="mega-icon" style="background-image: url(/assets/bonus.change.svg)"></div>
     <abbr class="timeago"><%= activity.created_at.strftime("%F %H:%M") %></abbr> 
     <div class="title">
-      <%= activity.owner %> обновил профиль клиента <%= link_to "#{activity.trackable}", activity.trackable %> 
+      <%= activity.owner %> добавил клиента <%= link_to "#{activity.trackable}", activity.trackable %> 
+    </div>
+    <div class="details">
     </div>
     <% end %>
     </div>

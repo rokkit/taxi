@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730081013) do
+ActiveRecord::Schema.define(version: 20130813131455) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total"
@@ -56,14 +56,11 @@ ActiveRecord::Schema.define(version: 20130730081013) do
 
   create_table "trips", force: true do |t|
     t.integer  "user_id"
-    t.datetime "trip_date",                 null: false
-    t.integer  "duration"
-    t.decimal  "price",       default: 0.0
     t.integer  "bonus_point", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "client_id"
     t.integer  "added_bonus"
+    t.integer  "orders_id"
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id"

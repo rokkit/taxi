@@ -9,7 +9,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @orders = Orders.all
   end
 
   # GET /trips/1
@@ -19,8 +19,16 @@ class TripsController < ApplicationController
 
   # GET /trips/new
   def new
-    @trip = Trip.new
-    @trip.client  = Client.new
+    if params[:client].present?
+      @client = Client.find(params[:client])
+      order = Orders.where(id_client: @client.natural_person).last
+      @trip = Trip.new orders_id: order
+      @trip.orders = order
+      @not_bonus_orders =  @client.natural_person.orders.map do |o|
+        o if Trip.where(orders: o).blank?
+      end
+    end
+    #@trip.client  = Client.new
   end
 
   # GET /trips/1/edit

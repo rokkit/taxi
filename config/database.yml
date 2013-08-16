@@ -27,11 +27,9 @@ production:
 mssql:
   adapter: sqlserver
   mode: dblib
-  dataserver: sql2008ds   # Name from freetds.conf, host or instance 'localhost\SQLEXPRESS'
-  host: mydb.net          # Used if dataserver is blank.
+  host: ec2-107-21-71-208.compute-1.amazonaws.com         # Used if dataserver is blank.
   port: 1433              # Used if host present. Default is 1433.
-  database: taxi_bonus
+  database: besttaxi
   username: sa
-  password: secret
+  password: F0rMyFamily!&
   timeout: 5000
-  azure: true

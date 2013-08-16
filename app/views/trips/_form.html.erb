@@ -1,23 +1,21 @@
+<%# @trip.orders %>
+<%# @client.natural_person.orders.each {|o| p o} %>
+
+Дата <%= @trip.orders.datetime_from %>
+Длина пути: <%= @trip.orders.route_length %>
+Стоимость: <%= @trip.orders.cost_plan %> ( <%= @trip.orders.cost %>)
+
 <%= semantic_form_for @trip do |f| %>
   <div class="trip-form">
   <%= f.inputs do %>
-    <%= f.input :client, :as => :autocomplete, :url => autocomplete_client_email_trips_path, input_html: {name:"",:id_element => '#user_id_auto', :class => "", id: "user_id_auto_phone"},:update_elements => {} %>
-    <%# f.autocomplete_field :user, autocomplete_client_email_trips_path, :id_element => '#user_id_auto',:update_elements => {} %>
-    <div id="user-form" style="display: none">
-      <%= f.semantic_fields_for :client do |u|%>
-        <%= u.input :email %>
-        <%= u.input :card_number  %>
-        <%= u.input :fio %>
-      <% end %>
-    </div>
-    <%= f.hidden_field :client,name:"trip[client_id]", id: "user_id_auto" %>
-    
-    <%= f.text_field :trip_date, :placeholder => "Дата", id: "trip_date", class: "input-medium", value: DateTime.now.strftime("%d %m, %Y")  %>
-    <%= f.text_field :trip_date, :placeholder => "Время", id: "trip_time", class: "input-mini" %>
+
+    <%= f.input :orders, collection: @not_bonus_orders, include_blank: false %> 
+    <%# f.text_field :trip_date, :placeholder => "Дата", id: "trip_date", class: "input-medium", value: DateTime.now.strftime("%d %m, %Y")  %>
+    <%# f.text_field :trip_date, :placeholder => "Время", id: "trip_time", class: "input-mini" %>
     
     <div class="controls controls-row">
-      <%= f.input :duration, :input_html => { :class => "input-mini" } %>
-      <%= f.input :price, :input_html => { :class => "input-mini" }  %>
+      <%# f.input :duration, :input_html => { :class => "input-mini" } %>
+      <%# f.input :price, :input_html => { :class => "input-mini" }  %>
       <%= f.input :bonus_point, :input_html => { :class => "input-mini" } %>
     </div>
   <% end %>

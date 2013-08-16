@@ -8,29 +8,10 @@
   </div>
   <div class="span4">
     <div class="well well-smal">
-      <h3>На счету: <span class="badge badge-info"><%=  "#{@client.account.total} баллов" %></span></h3>
+      <h3>На счету: <span class="badge badge-info"><%=  "#{@total_bonus} баллов" %></span></h3>
     </div>
   </div>
 </div>
-
-<table>
-<table class="table table-striped">
-  <thead>
-    <th>Дата</th>
-    <th>Время</th>
-    <th>Стоимость</th>
-    <th>Потрачено бонусов</th>
-  </thead>
-  <tbody>
-    <% @trips.each do |trip| %>
-    <tr>
-      <td><%= Russian::strftime trip.trip_date, "%d %B %Y"%></td>
-      <td><%= trip.duration %></td>
-      <td><%= number_to_currency trip.price %></td>
-      <td><%= trip.bonus_point %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "trips/trips" %>
 <%= link_to 'Изменить', edit_client_path(@client) if can? :manage, @client %> |
 <%= link_to 'Назад', clients_path %>

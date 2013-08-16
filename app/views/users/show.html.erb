@@ -8,12 +8,9 @@
     <th>Потрачено бонусов</th>
   </thead>
   <tbody>
-    <% @trips.each do |trip| %>
+    <% @orders.each do |order| %>
     <tr>
-      <td><%= trip.trip_date %></td>
-      <td><%= trip.duration %></td>
-      <td><%= number_to_currency trip.price %></td>
-      <td><%= trip.bonus_point %></td>
+      <td><%= order.datetime_from %></td>
     </tr>
     <% end %>
   </tbody>
