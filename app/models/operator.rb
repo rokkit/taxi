@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Operator < User
  before_create :create_account
 
