@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BonusProgram < ActiveRecord::Base
   has_many :clients
   before_save :update_name

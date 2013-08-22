@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Client < User
 #include ActiveModel::Dirty
   has_many :trips

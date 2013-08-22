@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Trip < ActiveRecord::Base
   belongs_to :client
   belongs_to :orders, class_name: "Orders"

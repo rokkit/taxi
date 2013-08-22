@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Inform < ActionMailer::Base
   default from: "from@example.com"
 

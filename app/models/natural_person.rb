@@ -1,3 +1,4 @@
+# encoding: utf-8
 class NaturalPerson < ActiveRecord::Base
   establish_connection "mssql"
   self.table_name = "dbo.natural_person"

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ModelsController < ApplicationController
   before_action :set_model, only: [:show, :edit, :update, :destroy]
 

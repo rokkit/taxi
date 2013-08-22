@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin < User
  before_create :create_account
  def to_s

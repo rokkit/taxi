@@ -1,3 +1,4 @@
+# encoding: utf-8
 class OperatorsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :load_resource, only: :create

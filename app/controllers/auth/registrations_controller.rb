@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Auth::RegistrationsController < Devise::RegistrationsController
   def new
     super # no customization, simply call the devise implementation
