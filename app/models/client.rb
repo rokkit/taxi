@@ -7,7 +7,9 @@ class Client < User
 
 
   after_save :bonus_program_changed_callback#, :if => bonus_program.changed?
+  after_create :send_password
  before_create :create_account, :assign_bonus_program
+
 
   accepts_nested_attributes_for :account
    include PublicActivity::Model
@@ -25,6 +27,12 @@ class Client < User
   def create_account
     self.roles << Role.where(name: "client").first_or_create
       self.account = Account.create total: 0
+  end
+
+  def send_password
+    pwd =  Devise.friendly_token.first 6
+    self.password = self.password_confirmation = pwd
+    Inform.send_password_info(self, pwd).deliver
   end
 
   def assign_bonus_program

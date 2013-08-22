@@ -24,7 +24,13 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
-    @client = Client.new
+    if params[:natural_person].present?
+      natural_person = NaturalPerson.find(params[:natural_person])
+      @client = Client.new natural_person: natural_person, email: natural_person.contacts.first.contact_content, fio: "#{natural_person.name} #{natural_person.surname}"
+      #@client.natural_person_id NaturalPerson.find(params[:natural_person])
+    else
+     @client = Client.new
+    end
   end
 
   # GET /clients/1/edit

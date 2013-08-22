@@ -11,6 +11,8 @@ class Trip < ActiveRecord::Base
   tracked owner: ->(controller, model) { controller && controller.current_user }
 
   validates :orders, presence: true
+  validates :bonus_point, numericality: {greater_than: 0}
+  validate :bonus_point_must_be_lower_than_account_total_bonus
 
   def initialize(attributes = {})
     super
@@ -24,6 +26,10 @@ class Trip < ActiveRecord::Base
   private
   def windraw_bonus_points
     self.client.account.windraw_bonus_points bonus_point
+  end
+
+  def bonus_point_must_be_lower_than_account_total_bonus
+    errors.add :trip, "Недостаточно бонусов" if self.bonus_point.to_f > self.orders.natural_person.client.account.total_bonus_points
   end
 
   def add_bonus_points

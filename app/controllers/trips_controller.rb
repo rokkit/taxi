@@ -9,7 +9,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @orders = Orders.all
+    @orders = Orders.includes(:natural_person).limit(1)
   end
 
   # GET /trips/1
@@ -19,15 +19,14 @@ class TripsController < ApplicationController
 
   # GET /trips/new
   def new
-    if params[:client].present?
-      @client = Client.find(params[:client])
-      order = Orders.where(id_client: @client.natural_person).last
+      #@client = Client.find(params[:client])
+      order = Orders.find(params[:order_id])
+      @client = order.natural_person.client
       @trip = Trip.new orders_id: order
       @trip.orders = order
       @not_bonus_orders =  @client.natural_person.orders.map do |o|
         o if Trip.where(orders: o).blank?
       end
-    end
     #@trip.client  = Client.new
   end
 
@@ -38,13 +37,6 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    unless trip_params[:client_id].blank?
-     # trip_params.except! :client_attributes
-    end
-
-    #raise trip_params.inspect
-    #raise trip_params[:client_attributes].inspect
-
     @trip = Trip.new(trip_params)
     respond_to do |format|
       if @trip.save

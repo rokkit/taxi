@@ -10,4 +10,8 @@ class Account < ActiveRecord::Base
   def add_bonus_points price, added_bonus
     self.total = self.total + added_bonus
   end
+
+  def total_bonus_points
+     Orders::calculate_total_bonus self.client
+  end
 end
