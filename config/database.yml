@@ -20,10 +20,15 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
+  adapter: sqlserver
+  mode: dblib
+  host: localhost
+  port: 49157           # Used if host present. Default is 1433.
+  database: besttaxi
+  username: bonus
+  password: Q1m52a63
   timeout: 5000
+
   #adapter: sqlserver
   #mode: dblib
   #host: localhost
