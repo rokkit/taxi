@@ -18,14 +18,14 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara', '2.0.3'  # capybara-webkit works with this version
-  gem 'capybara-webkit'
+  # gem 'capybara-webkit'
   gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
   gem 'email_spec'
 end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem "compass-rails", github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
+gem "compass-rails"#, github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
 gem 'susy'
 gem 'sassy-buttons'
 
@@ -55,6 +55,8 @@ gem 'activerecord-session_store'
 gem 'russian'
 gem 'public_activity', git: 'https://github.com/pokonski/public_activity.git'
 
+# gem 'odbc'
+gem 'ruby-odbc'
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter'
 
