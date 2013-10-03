@@ -49,11 +49,22 @@ production:
   #password: F0rMyFamily!&
   #timeout: 5000
 mssql:
+  # adapter: sqlserver
+  # mode: dblib
+  # host: localhost
+  # port: 49157           # Used if host present. Default is 1433.
+  # database: besttaxi
+  # username: bonus
+  # password: Q1m52a63
+  # timeout: 5000§
+  # 
   adapter: sqlserver
-  mode: dblib
+  mode: odbc
+  dsn: taximaxima_dsn
   host: localhost
   port: 49157           # Used if host present. Default is 1433.
   database: besttaxi
   username: bonus
   password: Q1m52a63
   timeout: 5000
+  encoding: utf8
