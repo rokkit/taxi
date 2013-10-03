@@ -11,10 +11,15 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= order.datetime_from %></td>
-      <td>da391b6bfe4c33cb91619b52d0e2372f1d703fe2d
-</td>
-      <td><%= order.route_length %></td>
+      <td><%= order.datetime_from %></td>     <td>
+        <% unless order.natural_person.nil? %>
+          <% if order.natural_person.client.nil? %>
+            <%= link_to "#{order.natural_person.full_name}", new_client_path(natural_person: order.natural_person.id) %>
+          <% else %>
+            <%= link_to  order.natural_person.client,  order.natural_person.client %>
+          <% end %>
+        <% end %>
+      </td>   <td><%= order.route_length %></td>
       <td><%= order.cost_plan %></td>
       <td><%= order.trip.try(:bonus_point) %></td>
       <td>
