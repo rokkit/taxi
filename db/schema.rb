@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20130816100935) do
 
   create_table "accounts", force: true do |t|
-    t.decimal  "total"
+    t.decimal  "total",      precision: 18, scale: 0
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["client_id"], name: "index_accounts_on_client_id"
+  add_index "accounts", ["client_id"], name: "index_accounts_on_user_id"
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20130816100935) do
 
   create_table "bonus_programs", force: true do |t|
     t.string   "name"
-    t.decimal  "rate"
+    t.decimal  "rate",       precision: 18, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "human_name"
@@ -56,16 +56,45 @@ ActiveRecord::Schema.define(version: 20130816100935) do
 
   create_table "trips", force: true do |t|
     t.integer  "user_id"
-    t.integer  "bonus_point", default: 0
+    t.datetime "trip_date",                                        null: false
+    t.integer  "duration"
+    t.decimal  "price",       precision: 18, scale: 0, default: 0
+    t.integer  "bonus_point",                          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "client_id"
     t.integer  "added_bonus"
     t.integer  "orders_id"
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id"
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "users", force: true do |t|
+    t.integer  "email",                  limit: 8,              null: false
+    t.string   "encrypted_password",               default: ""
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                    default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "card_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+    t.string   "fio"
+    t.integer  "bonus_program_id"
+    t.integer  "natural_person_id",                default: 1,  null: false
+    t.string   "mail"
+  end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
