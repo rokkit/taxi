@@ -29,13 +29,15 @@ production:
   # password: Q1m52a63
   # timeout: 5000
   adapter: sqlserver
-  mode: dblib
+  mode: odbc
+  dsn: taxibonus_dsn
   host: localhost
   port: 49157           # Used if host present. Default is 1433.
   database: bonustaxi
   username: bonus
   password: Q1m52a63
   timeout: 5000
+  encoding: utf8
 
 #mssql:
   #adapter: sqlserver
