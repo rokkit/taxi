@@ -56,15 +56,14 @@ mssql:
   # database: besttaxi
   # username: bonus
   # password: Q1m52a63
-  # timeout: 5000§
+  # timeout: 5000
   # 
   adapter: sqlserver
-  mode: dblib
-  dsn: taximaxima_dsn
+  # mode: dblib
+  # dsn: taximaxima_dsn
   host: localhost
   port: 49157           # Used if host present. Default is 1433.
   database: besttaxi
   username: bonus
   password: Q1m52a63
   timeout: 5000
-  encoding: utf8
