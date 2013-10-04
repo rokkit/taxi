@@ -59,7 +59,7 @@ mssql:
   # timeout: 5000
   # 
   adapter: sqlserver
-  # mode: dblib
+  mode: dblib
   # dsn: taximaxima_dsn
   host: localhost
   port: 49157           # Used if host present. Default is 1433.
