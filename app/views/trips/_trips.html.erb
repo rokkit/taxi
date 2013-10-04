@@ -9,7 +9,7 @@
     <th></th>
   </thead>
   <tbody>
-      <%= raw_connection %>
+      <%= Order.first %>
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.datetime_from %></td>
