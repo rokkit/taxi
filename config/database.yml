@@ -37,7 +37,8 @@ production:
   username: bonus
   password: Q1m52a63
   timeout: 5000
-  encoding: utf8
+  encoding: "cp1251"
+  
 
 #mssql:
   #adapter: sqlserver
