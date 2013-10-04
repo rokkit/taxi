@@ -1,4 +1,4 @@
-# encoding: utf-8
+# encoding: windows-1251
 class TripsController < ApplicationController
 
   before_filter :authenticate_user!
