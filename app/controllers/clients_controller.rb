@@ -1,4 +1,4 @@
-# encoding: utf-8
+# encoding: windows-1251
 class ClientsController < ApplicationController
   autocomplete :natural_person, :name, display_value: :full_name, scoped: [:search_by_full_name]
   before_filter :authenticate_user!
