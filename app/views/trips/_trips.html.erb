@@ -9,10 +9,7 @@
     <th></th>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
-    <tr>
+      <%= ActiveRecord::Base.connection.raw_connection.encoding %>
 
-    </tr>
-    <% end %>
   </tbody>
 </table>
