@@ -6,7 +6,7 @@
     <%= f.hidden_field :natural_person_id %>
     <%= f.input :email, :label => "Номер телефона" %>
     <%= f.input :mail, label: "Email" %>
-    <%= f.input :fio, :label => "Ф.И.О." %>
+    <%# f.input :fio, :label => "Ф.И.О." %>
     <%= f.input :card_number, :label => "Номер карты" %>
     <%= f.semantic_fields_for :account do |a| %>
       <% a.input :total %>
