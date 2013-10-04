@@ -29,7 +29,7 @@ production:
   # password: Q1m52a63
   # timeout: 5000
   adapter: sqlserver
-  mode: odbc
+  mode: dblib
   dsn: taxibonus_dsn
   host: localhost
   port: 49157           # Used if host present. Default is 1433.
