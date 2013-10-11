@@ -24,6 +24,14 @@ class Client < User
  def to_s
    "#{fio} (+#{email})"
  end
+ 
+ def fio=(value)
+     # custom actions
+     ###
+     write_attribute(:fio, value.encode('cp1251'))
+     # this is same as self[:attribute_name] = value
+   end
+   
   private
   def create_account
     self.roles << Role.where(name: "client").first_or_create
