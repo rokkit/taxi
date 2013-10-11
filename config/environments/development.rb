@@ -26,4 +26,13 @@ Taxi::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.default_url_options = { :host => "http://taxi-300-1-300.ru" }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'taxi.bonus.300.1.300@gmail.com',
+    :password             => 'taxibonus3001300',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end

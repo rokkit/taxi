@@ -22,6 +22,7 @@ Taxi::Application.configure do
     :user_name            => 'taxi.bonus.300.1.300@gmail.com',
     :password             => 'taxibonus3001300',
     :authentication       => 'plain',
+    :domain => '5.17.148.22',
     :enable_starttls_auto => true  }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
