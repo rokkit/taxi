@@ -22,20 +22,20 @@ class Client < User
   #end
 
  def to_s
-   "#{fio.encode} (+#{email})"
+   "#{self.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)} (+#{email})"
  end
  
- def fio=(value)
-     # custom actions
-     ###
-     write_attribute(:fio, value.encode('cp1251'))
-     # this is same as self[:attribute_name] = value
-   end
-   
-   def fio
-     f = read_attribute(:fio)
-     f.encode
-   end
+ # def fio=(value)
+ #     # custom actions
+ #     ###
+ #     write_attribute(:fio, value.encode('cp1251'))
+ #     # this is same as self[:attribute_name] = value
+ #   end
+ #   
+ #   def fio
+ #     f = read_attribute(:fio)
+ #     f.encode
+ #   end
    
   private
   def create_account
