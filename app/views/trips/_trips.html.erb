@@ -18,7 +18,7 @@
           <% if order.natural_person.client.nil? %>
             <%= link_to "#{order.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)}", new_client_path(natural_person: order.natural_person.id) %>
           <% else %>
-            <%= link_to  order.natural_person.client,  order.natural_person.client %>
+            <%= link_to  order.natural_person.client.encode('utf8'),  order.natural_person.client %>
           <% end %>
         <% end %>
       </td>
