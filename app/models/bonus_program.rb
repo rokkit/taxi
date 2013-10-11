@@ -13,6 +13,6 @@ class BonusProgram < ActiveRecord::Base
 
   private
   def update_name
-    self.name = Russian::transliterate self.human_name
+    self.name = Russian::transliterate self.human_name.encode
   end
 end
