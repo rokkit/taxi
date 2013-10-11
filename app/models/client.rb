@@ -32,6 +32,10 @@ class Client < User
      # this is same as self[:attribute_name] = value
    end
    
+   def fio
+     self.fio.encode
+   end
+   
   private
   def create_account
     self.roles << Role.where(name: "client").first_or_create
