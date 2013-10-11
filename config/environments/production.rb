@@ -14,7 +14,16 @@ Taxi::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
   
-
+  config.action_mailer.default_url_options = { :host => "http://taxi-300-1-300.ru" }
+  Rails.application.routes.default_url_options[:host] = "http://taxi-300-1-300.ru"
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    :address              => "smtp.yandex.ru",
+    :port                 => 465,
+    :user_name            => 'taxi-bonus-3001300@yandex.ru',
+    :password             => 'bonustaxi',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
