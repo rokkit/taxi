@@ -33,7 +33,8 @@ class Client < User
    end
    
    def fio
-     self.fio.encode
+     f = read_attribute(:fio)
+     f.encode
    end
    
   private
