@@ -8,10 +8,8 @@ class Orders < ActiveRecord::Base
       total = 0
       total_spend_bonus_points = 0
       orders.each do |order|
-        unless order.trip.nil?
-          total += order.cost_plan * (client.bonus_program.rate/100) if order.trip.bonus_point == 0
-          total_spend_bonus_points += order.trip.bonus_point unless order.trip.bonus_point == 0
-        end
+          total += order.cost_plan * (client.bonus_program.rate/100) if order.trip.nil?
+          total_spend_bonus_points += order.trip.bonus_point unless order.trip.try(:bonus_point) == 0
       end
       total# - total_spend_bonus_points
    end
