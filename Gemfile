@@ -12,6 +12,7 @@ end
 group :production do
   gem 'therubyracer', platforms: :ruby
   gem 'pg'
+  gem 'tiny_tds'
 end
 
 group :test do
@@ -57,7 +58,7 @@ gem 'public_activity', git: 'https://github.com/pokonski/public_activity.git'
 
 # gem 'odbc'
 gem 'ruby-odbc'
-gem 'tiny_tds'
+
 gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
