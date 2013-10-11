@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816100935) do
+ActiveRecord::Schema.define(version: 20131011071935) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total",      precision: 18, scale: 0
@@ -91,10 +91,9 @@ ActiveRecord::Schema.define(version: 20130816100935) do
     t.integer  "bonus_program_id"
     t.integer  "natural_person_id",                default: 1,  null: false
     t.string   "mail"
+    t.string   "bonus_card"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
