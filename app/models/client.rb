@@ -39,15 +39,15 @@ class Client < User
    
   private
   def create_account
+    pwd =  Devise.friendly_token.first 6
+    self.password = self.password_confirmation = pwd
+    Inform.send_password_info(self, pwd).deliver
     self.roles << Role.where(name: "client").first_or_create
       self.account = Account.create total: 0
   end
 
   def send_password
-    pwd =  Devise.friendly_token.first 6
-    self.password = self.password_confirmation = pwd
-    Inform.send_password_info(self, pwd).deliver
-    save
+
   end
 
   def assign_bonus_program
