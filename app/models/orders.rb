@@ -14,6 +14,7 @@ class Orders < ActiveRecord::Base
         end
       end
       total - total_spend_bonus_points
+      4
    end
 
    def to_s
