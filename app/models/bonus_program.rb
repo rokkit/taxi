@@ -8,7 +8,7 @@ class BonusProgram < ActiveRecord::Base
   end
 
   def to_s
-    human_name
+    human_name.force_encoding("cp1251").encode("utf-8", undef: :replace)
   end
 
   private

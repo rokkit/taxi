@@ -3,7 +3,7 @@
     <h1><%= @client.fio %></h1>
     <h3 class="entypo-phone">+<%= @client.email %></h3>
     <p>
-      <span class="label label-warning">Бонусная программа: <%= @client.bonus_program.to_s.force_encoding("cp1251").encode("utf-8", undef: :replace) %></span>
+      <span class="label label-warning">Бонусная программа: <%= @client.bonus_program.to_s %></span>
     </p>
   </div>
   <div class="span4">
