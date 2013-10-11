@@ -17,6 +17,7 @@ class Trip < ActiveRecord::Base
 
   def initialize(attributes = {})
     super
+    self.trip_date = DateTime.now
     #self.client = Client.new
   end
 
