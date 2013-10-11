@@ -58,3 +58,28 @@
   color: #666;
   font-size: 13px;
 }
+
+
+#footer {
+  float: left;
+  background: url("http://taxi-300-1-300.ru/images/footer6.jpg") left bottom repeat-x;
+  width: 100%;
+  /*margin: -170px 0px 0px 0px;*/
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.footer-img3 {
+  background: url("http://taxi-300-1-300.ru/images/footer7.jpg") right top no-repeat;
+  height: 174px;
+}
+.bottom-menu3 {
+  padding-top: 47px;
+  color: #FFF;
+  text-align: center;
+}
+#footer .copyright {
+  font-size: 18px;
+  color: #FFF;
+  line-height: 140%;
+}
