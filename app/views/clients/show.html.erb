@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="span8">
-    <h1><%= @client.fio.force_encoding("cp1251").encode("utf-8", undef: :replace) %></h1>
+    <h1><%= @client.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace) %></h1>
     <h3 class="entypo-phone">+<%= @client.email %></h3>
     <p>
       <span class="label label-warning">Бонусная программа: <%= @client.bonus_program.to_s %></span>
