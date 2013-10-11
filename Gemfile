@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 
 
   gem 'sqlite3'
-  gem "iconv", "~> 1.0.3"
+  # gem "iconv", "~> 1.0.3"
 group :development do
 end
 
