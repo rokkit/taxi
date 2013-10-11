@@ -22,7 +22,7 @@ class Client < User
   #end
 
  def to_s
-   "#{fio} (+#{email})"
+   "#{fio.encode} (+#{email})"
  end
  
  def fio=(value)
