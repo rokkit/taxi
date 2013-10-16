@@ -22,7 +22,7 @@ class Client < User
   #end
 
  def to_s
-   "#{self.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)} (+#{email})"
+   "#{self.natural_person.try { |n| n.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)} } (+#{email})"
  end
  
  # def fio=(value)
