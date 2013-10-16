@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   def role?(role)
     return !!self.roles.find_by_name(role.to_s)
   end
-  before_create :generate_and_send_password_by_sms
+  # before_create :generate_and_send_password_by_sms
+  
+  
   
   
 
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
     #client.account.sms.messages.create(
       #from: APP['twilio']['from'],
       #to: "+#{self.email}",
-      #body: "таксИ шашечкИ ВАШ пароль!: #{gen_pass}"
+      #body: "#{gen_pass}"
     #)
     #self.password = gen_pass
     self.password = "password"

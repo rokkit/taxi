@@ -7,4 +7,9 @@ class Inform < ActionMailer::Base
     @password = password
     mail(to: @client.mail, subject: 'Бонусная программа Такси 300-1-300')
   end
+  
+  def message_to_operator to, password
+    @password = password
+    mail(to: to, subject: 'Бонусная программа Такси 300-1-300')
+  end
 end

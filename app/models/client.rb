@@ -8,8 +8,9 @@ class Client < User
 
 
   after_save :bonus_program_changed_callback#, :if => bonus_program.changed?
-  after_create :send_password
- before_create :create_account, :assign_bonus_program
+ before_create :create_account, :assign_bonus_program, :generate_and_send_password
+ 
+ validates :natural_person, presence: true
 
 
   accepts_nested_attributes_for :account
@@ -46,8 +47,18 @@ class Client < User
       self.account = Account.create total: 0
   end
 
-  def send_password
-
+  def generate_and_send_password
+    #gen_pass = Devise.friendly_token.first(6)
+    #client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
+    #client.account.sms.messages.create(
+      #from: APP['twilio']['from'],
+      #to: "+#{self.email}",
+      #body: "#{gen_pass}"
+    #)
+    #self.password = gen_pass
+    self.password = "password"
+    Inform.send_password_info(self, self.password).send
+    #update_attribute :password, password
   end
 
   def assign_bonus_program
