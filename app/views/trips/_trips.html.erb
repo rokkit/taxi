@@ -30,7 +30,7 @@
           <% unless order.natural_person.nil? or order.natural_person.client.nil? %>
             <%= link_to "Оплатить бонусами", new_trip_path(client: @client, order_id: order) %>
           <% else %>
-              <%= link_to "Пригласить k", new_client_path(natural_person: order.natural_person)  %>
+              <%= link_to "Пригласить в бонусную программу", new_client_path(natural_person: order.natural_person)  %>
           <% end %>
         <% end %>
       </td>

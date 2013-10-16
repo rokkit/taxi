@@ -58,7 +58,7 @@ gem 'twilio-ruby'
 gem 'activerecord-session_store'
 gem 'russian'
 gem 'public_activity', git: 'https://github.com/pokonski/public_activity.git'
-
+gem 'kaminari'
 # gem 'odbc'
 gem 'ruby-odbc'
 
