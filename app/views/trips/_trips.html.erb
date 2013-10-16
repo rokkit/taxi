@@ -4,7 +4,8 @@
     <th>Дата</th>
     <% unless current_user == order.natural_person.client %><th>Клиент</th><% end %>
     <th>Длина маршрута</th>
-    <th>Стоимость</th>
+    <th>Стоимость с учетом скидки</th>
+    <th>Полная стоимость</th>
     <th>Потрачено бонусов</th>
     <th></th>
   </thead>
@@ -24,6 +25,7 @@
           </td>
           <td><%= order.route_length %></td>
           <td><%= order.cost_plan %></td>
+          <td><%= order.cost_plan + order.trip.try(:bonus_point) %></td>
           <td><%= order.trip.try(:bonus_point) %></td>
           <td>
             <% if can? :manage, @client and order.trip.try(:bonus_point).nil?%>
