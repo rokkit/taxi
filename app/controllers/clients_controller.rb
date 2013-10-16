@@ -18,7 +18,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     #@trips = Trip.all
-    @orders = @client.natural_person.orders.order_by("datetime_from DESC")
+    @orders = @client.natural_person.orders.order("datetime_from DESC")
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
     @total_bonus = Orders::calculate_total_bonus @client
   end
