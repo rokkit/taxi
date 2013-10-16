@@ -37,6 +37,7 @@ class Trip < ActiveRecord::Base
     else
       amount = self.orders.cost_plan - self.bonus_point
     end
+    self.orders.cost_manual_changed = 1
     self.orders.cost_plan = amount
     self.orders.save!
   end
