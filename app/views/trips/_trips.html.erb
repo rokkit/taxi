@@ -2,7 +2,7 @@
 <table class="table table-striped">
   <thead>
     <th>Дата</th>
-    <% unless current_user == order.natural_person.client %><th>Клиент</th><% end %>
+    <% unless current_user.role? :client %><th>Клиент</th><% end %>
     <th>Длина маршрута</th>
     <th>Стоимость с учетом скидки</th>
     <th>Полная стоимость</th>
