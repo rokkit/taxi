@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @orders = Orders.includes(:natural_person).limit(1).order("datetime_from DESC")
+    @orders = Orders.includes(:natural_person).limit(15).order("id DESC")
   end
 
   # GET /trips/1
