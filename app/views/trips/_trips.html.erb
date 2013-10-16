@@ -14,7 +14,7 @@
         <tr>
           <td><%= order.datetime_from %></td>
           <td>
-            <% unless order.natural_person.nil? || current_user.class == "Client" %>
+            <% unless order.natural_person.nil? || current_user == order.natural_person.client %>
               <% if order.natural_person.client.nil? %>
                 <%= link_to "#{order.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)}", new_client_path(natural_person: order.natural_person.id) %>
               <% else %>
@@ -28,9 +28,8 @@
           <td>
             <% if can? :manage, @client and order.trip.try(:bonus_point).nil?%>
               <% unless order.natural_person.nil? or order.natural_person.client.nil? %>
+                <%= link_to "Оплатить бонусами", new_trip_path(client: @client, order_id: order) %>
               <% else %>
-              <%= link_to "Оплатить бонусами", new_trip_path(client: @client, order_id: order) %>
-              
                   <%= link_to "Пригласить в бонусную программу", new_client_path(natural_person: order.natural_person)  %>
               <% end %>
             <% end %>
