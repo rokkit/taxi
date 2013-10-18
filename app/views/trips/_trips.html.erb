@@ -4,25 +4,27 @@
     <th>Дата</th>
     <% unless current_user.role? :client %><th>Клиент</th><% end %>
     <th>Длина маршрута</th>
-    <th>Стоимость с учетом скидки</th>
+
     <th>Полная стоимость</th>
-    <th>Потрачено бонусов</th>
     <th></th>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
         <% if order.natural_person.present? %>
         <tr>
-          <td><%= order.datetime_from %></td>
-          <td>
+          <td><%= order.datetime_from.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
+
             <% unless order.natural_person.nil? || current_user == order.natural_person.client %>
+                                  <td>
               <% if order.natural_person.client.nil? %>
+  
                 <%= link_to "#{order.natural_person.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)}", new_client_path(natural_person: order.natural_person.id) %>
               <% else %>
                 <%= link_to  order.natural_person.client.to_s.encode,  order.natural_person.client %>
               <% end %>
+                        </td>
             <% end %>
-          </td>
+
           <td><%= order.route_length %></td>
           <td><%= order.cost_plan %></td>
           <td>
@@ -30,7 +32,6 @@
               <%= order.cost_plan + order.trip.try(:bonus_point) %>
               <% end %>
           </td>
-          <td><%= order.trip.try(:bonus_point) %></td>
           <td>
             <% if can? :manage, @client and order.trip.try(:bonus_point).nil?%>
               <% unless order.natural_person.nil? or order.natural_person.client.nil? %>
