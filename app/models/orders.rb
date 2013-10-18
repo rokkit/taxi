@@ -8,12 +8,14 @@ class Orders < ActiveRecord::Base
       total = 0
       total_spend_bonus_points = 0
       orders.each do |order|
-          total += order.cost_plan * (client.bonus_program.rate/100.0) if order.trip.nil?
+        if order.datetime_from > DateTime.new(2013, 10, 1)
+          total += order.cost_plan / (client.bonus_program.rate) if order.trip.nil?
           unless order.trip.nil?
             total_spend_bonus_points += order.trip.bonus_point unless order.trip.try(:bonus_point) == 0
           end
+        end
       end
-      total - total_spend_bonus_points
+      total - client.natural_person.client.windrawed_bonus
    end
 
    def to_s

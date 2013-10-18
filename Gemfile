@@ -13,8 +13,8 @@ end
 group :production do
   gem 'therubyracer', platforms: :ruby
   gem 'pg'
-  gem 'tiny_tds'
 end
+gem 'tiny_tds'
 
 group :test do
   gem 'rspec-rails'

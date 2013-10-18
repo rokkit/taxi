@@ -37,6 +37,11 @@ class Client < User
  #     f = read_attribute(:fio)
  #     f.encode
  #   end
+ 
+ def windraw_bonus_points! amount
+   self.windrawed_bonus += amount.to_i
+   self.save!
+ end
    
   private
   def create_account

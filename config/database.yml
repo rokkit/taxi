@@ -5,10 +5,19 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
+  adapter: sqlserver
+  mode: dblib
+  dsn: taxibonus_dsn
+  host: 5.17.148.22
+  port: 49157           # Used if host present. Default is 1433.
+  database: bonustaxi
+  username: bonus
+  password: Q1m52a63
   timeout: 5000
+  encoding: "cp1251"
+  
+
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,7 +62,7 @@ mssql:
   adapter: sqlserver
   mode: dblib
   # dsn: taximaxima_dsn
-  host: localhost
+  host: 5.17.148.22
   port: 49157           # Used if host present. Default is 1433.
   database: besttaxi
   username: bonus

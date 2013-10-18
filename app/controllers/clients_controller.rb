@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :load_resource, only: :create
   load_and_authorize_resource
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :destroy, :windraw_bonus_points]
   #def get_autocomplete_items(parameters)
     #super(parameters).search_by_full_name params[:q]
   #end
@@ -12,6 +12,18 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+  end
+  
+  def windraw_bonus_points
+      respond_to do |format|
+        if @client.windraw_bonus_points! params[:amount]
+          format.html { redirect_to @client, notice: "Списано #{params[:amount]} бонусов" }
+          format.json { render json: [status: "success"] }
+        else
+          format.html { render action: 'windraw_bonus_points' }
+          format.json { render json: [ status: 'error'], status: :unprocessable_entity }
+        end
+      end
   end
 
   # GET /clients/1
