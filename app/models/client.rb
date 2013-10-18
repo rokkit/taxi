@@ -39,8 +39,13 @@ class Client < User
  #   end
  
  def windraw_bonus_points! amount
-   self.windrawed_bonus += amount.to_i
-   self.save!
+   amount = amount.to_i
+   if Orders::calculate_total_bonus(self) < amount
+     false
+   else
+     self.windrawed_bonus += amount
+     self.save!
+   end
  end
    
   private

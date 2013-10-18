@@ -17,10 +17,17 @@ class ClientsController < ApplicationController
   def windraw_bonus_points
       respond_to do |format|
         if @client.windraw_bonus_points! params[:amount]
-          format.html { redirect_to @client, notice: "Списано #{params[:amount]} бонусов" }
+          
+          format.html { 
+            flash[:notice] = 'Списано #{params[:amount]} бонусов'
+            redirect_to @client
+           }
           format.json { render json: [status: "success"] }
         else
-          format.html { render action: 'windraw_bonus_points' }
+          format.html { 
+            flash[:notice] = 'Неверно указано количество баллов'
+            redirect_to @client
+          }
           format.json { render json: [ status: 'error'], status: :unprocessable_entity }
         end
       end
