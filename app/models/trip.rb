@@ -2,7 +2,6 @@
 class Trip < ActiveRecord::Base
   belongs_to :client
   belongs_to :orders, class_name: "Orders"
-  # after_create :discount_price
 
   accepts_nested_attributes_for :client,reject_if: proc { |attributes| attributes['email'].blank? }
 
@@ -13,7 +12,6 @@ class Trip < ActiveRecord::Base
 
   validates :orders, presence: true
   validates :bonus_point, numericality: {greater_than: 0}
-  # validate :bonus_point_must_be_lower_than_account_total_bonus
 
   def initialize(attributes = {})
     super
@@ -33,22 +31,6 @@ class Trip < ActiveRecord::Base
   def windraw_bonus_points
     self.client.account.windraw_bonus_points bonus_point
   end
-  
-  # def discount_price
-  #   amount = 0
-  #   if self.orders.cost_plan <= self.bonus_point
-  #     amount = 0
-  #   else
-  #     amount = self.orders.cost_plan - self.bonus_point
-  #   end
-  #   self.orders.cost_manual_changed = 1
-  #   self.orders.cost_plan = amount
-  #   self.orders.save!
-  # end
-
-  # def bonus_point_must_be_lower_than_account_total_bonus
-  #   errors.add :trip, "Недостаточно бонусов" if self.bonus_point.to_f > self.orders.natural_person.client.account.total_bonus_points
-  # end
 
 
 end

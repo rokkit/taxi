@@ -37,12 +37,12 @@ class Client < User
  #     f = read_attribute(:fio)
  #     f.encode
  #   end
- 
+ def total_bonus
+   self.trips.inject(0) { |sum, trip| sum + trip.bonus_point }
+ end
  def windraw_bonus_points! amount
    amount = amount.to_i
-   if Orders::calculate_total_bonus(self) < amount
-     false
-   else
+   if self.total_bonus.to_i > amount
      self.windrawed_bonus += amount
      self.save!
    end
