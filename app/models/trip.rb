@@ -13,7 +13,7 @@ class Trip < ActiveRecord::Base
 
   validates :orders, presence: true
   validates :bonus_point, numericality: {greater_than: 0}
-  validate :bonus_point_must_be_lower_than_account_total_bonus
+  # validate :bonus_point_must_be_lower_than_account_total_bonus
 
   def initialize(attributes = {})
     super
@@ -24,7 +24,11 @@ class Trip < ActiveRecord::Base
   def to_s
     "Поездка №#{self.id}"
   end
-
+  def add_bonus_points
+    if self.bonus_point.to_f == 0
+      self.bonus_point = self.orders.cost_plan.to_f / self.client.bonus_program.rate.to_f
+    end
+  end
   private
   def windraw_bonus_points
     self.client.account.windraw_bonus_points bonus_point
@@ -42,14 +46,9 @@ class Trip < ActiveRecord::Base
   #   self.orders.save!
   # end
 
-  def bonus_point_must_be_lower_than_account_total_bonus
-    errors.add :trip, "Недостаточно бонусов" if self.bonus_point.to_f > self.orders.natural_person.client.account.total_bonus_points
-  end
+  # def bonus_point_must_be_lower_than_account_total_bonus
+  #   errors.add :trip, "Недостаточно бонусов" if self.bonus_point.to_f > self.orders.natural_person.client.account.total_bonus_points
+  # end
 
-  def add_bonus_points
-    if self.bonus_point.to_f == 0
-      self.added_bonus = price * (self.client.bonus_program.rate/100)
-      self.client.account.add_bonus_points price,self.added_bonus
-    end
-  end
+
 end

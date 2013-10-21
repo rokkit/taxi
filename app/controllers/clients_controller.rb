@@ -39,7 +39,8 @@ class ClientsController < ApplicationController
     #@trips = Trip.all
     @orders = @client.natural_person.orders.order("datetime_from DESC")
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
-    @total_bonus = Orders::calculate_total_bonus @client
+    # @total_bonus = Orders::calculate_total_bonus @client
+    @total_bonus = @client.trips.inject(0) { |sum, trip| sum + trip.bonus_point }
   end
 
   # GET /clients/new
@@ -95,6 +96,22 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url }
       format.json { head :no_content }
     end
+  end
+  
+  def check
+    @orders = Orders.order("id DESC").limit(5)
+    @orders.each do |order|
+      if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
+        @client = Client.new(email: order.natural_person.contacts.first.contact_content, bonus_program: BonusProgram.first, natural_person: order.natural_person)
+        @client.save!
+      end
+      if order.trip.nil? and @client.present?
+        trip = Trip.new orders: order, client: @client
+        trip.add_bonus_points
+        trip.save!
+      end
+    end
+    render text: "finish"
   end
 
   private

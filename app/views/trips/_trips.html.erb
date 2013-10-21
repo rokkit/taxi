@@ -6,6 +6,7 @@
     <th>Длина маршрута</th>
 
     <th>Полная стоимость</th>
+    <th>Получено бонусов</th>
     <th></th>
   </thead>
   <tbody>
@@ -29,14 +30,12 @@
           <td><%= order.cost_plan %></td>
           <td>
               <% if order.trip.try { |t| t.bonus_point.present? }  %>
-              <%= order.cost_plan + order.trip.try(:bonus_point) %>
+              <%= order.trip.try(:bonus_point) %>
               <% end %>
           </td>
           <td>
             <% if can? :manage, @client and order.trip.try(:bonus_point).nil?%>
-              <% unless order.natural_person.nil? or order.natural_person.client.nil? %>
-                <%= link_to "Оплатить бонусами", new_trip_path(client: @client, order_id: order) %>
-              <% else %>
+              <% if order.natural_person.nil? or order.natural_person.client.nil? %>
                   <%= link_to "Пригласить в бонусную программу", new_client_path(natural_person: order.natural_person)  %>
               <% end %>
             <% end %>

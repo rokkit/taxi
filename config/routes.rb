@@ -13,6 +13,7 @@ Taxi::Application.routes.draw do
     end
     resources :clients do
       get :autocomplete_natural_person_name, on: :collection
+      get :check, on: :collection
       post :windraw_bonus_points, on: :member
     end
     resources :operators

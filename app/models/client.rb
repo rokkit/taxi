@@ -67,7 +67,7 @@ class Client < User
     #)
     #self.password = gen_pass
     self.password = "password"
-    Inform.send_password_info(self, self.password).send
+    # Inform.send_password_info(self, self.password).send
     #update_attribute :password, password
   end
 
