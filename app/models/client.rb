@@ -1,5 +1,9 @@
 # encoding: utf-8
+require 'smssender'
+
 class Client < User
+  include SMS
+  
 #include ActiveModel::Dirty
   has_many :trips
   belongs_to :bonus_program
@@ -67,8 +71,7 @@ class Client < User
     #)
     #self.password = gen_pass
     self.password = "password"
-    # Inform.send_password_info(self, self.password).send
-    #update_attribute :password, password
+    SmsDealer.send "79523707281", "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
   end
 
   def assign_bonus_program

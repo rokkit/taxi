@@ -6,6 +6,11 @@ development:
     robokassa:
       login: "testlogin"
       secret: "secret"
+    smsdealer:
+      uid: '17839'
+      private_api_key: 'fnbxqfzrnd'
+      pid: '19453'
+      sender: '79626852824'
 test:
     twilio:
       from: '+12692056408'
@@ -14,8 +19,18 @@ test:
     robokassa:
       login: "testlogin"
       secret: "secret"
+    smsdealer:
+      uid: '17839'
+      private_api_key: 'fnbxqfzrnd'
+      pid: '19453'
+      sender: '79626852824'
 production:
     twilio:
       from: '+12692056408'
       sid: 'ACcbedf28d420b79c50d8acba6e98bd951'
       token: 'd09d6a6fbc0999ef7e6b56d75a890c79'
+    smsdealer:
+      uid: '17839'
+      private_api_key: 'fnbxqfzrnd'
+      pid: '19453'
+      sender: 'Taxi300'

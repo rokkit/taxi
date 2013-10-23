@@ -99,7 +99,7 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.order("id DESC").limit(10)
+    @orders = Orders.order("id DESC").limit(2)
     @orders.each do |order|
       if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
         @client = Client.new(email: order.natural_person.contacts.first.contact_content, bonus_program: BonusProgram.first, natural_person: order.natural_person)
