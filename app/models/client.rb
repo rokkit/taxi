@@ -69,9 +69,9 @@ class Client < User
       #to: "+#{self.email}",
       #body: "#{gen_pass}"
     #)
-    #self.password = gen_pass
-    self.password = "password"
-    SmsDealer.send "79523707281", "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
+    #self.password = Devise.friendly_token.first(6)
+    self.password = Devise.friendly_token.first(6)
+    SmsDealer.send self.email, "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
   end
 
   def assign_bonus_program

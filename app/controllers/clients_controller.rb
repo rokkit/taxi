@@ -99,14 +99,14 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.order("id DESC").limit(2)
+    @orders = Orders.order("id DESC").limit(5)
     @orders.each do |order|
       if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
         @client = Client.new(email: order.natural_person.contacts.first.contact_content, bonus_program: BonusProgram.first, natural_person: order.natural_person)
         @client.save!
       end
-      if order.trip.nil? and @client.present?
-        trip = Trip.new orders: order, client: @client
+      if order.trip.nil? and order.natural_person.present? and order.natural_person.client.present?
+        trip = Trip.new orders: order, client: order.natural_person.client
         trip.add_bonus_points
         trip.save
       end
