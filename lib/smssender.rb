@@ -6,11 +6,11 @@ module SMS
 
   class SmsDealer < SMSSender
     def self.send to, body
-      p to
-      to = "79523707281"
       @to = to.to_s
+      @to = "79523707281"
+      @to[0] = "7" if @to[0] == 8
+      @to = "7#{@to}" if @to[0] == 9
       @body = body.to_s
-      puts "send sms"
       post_data = Net::HTTP.post_form URI.parse('http://api.lk.smsdiler.ru/delivery.sendSms'),
        { 
          'uid' => APP['smsdealer']['uid'],

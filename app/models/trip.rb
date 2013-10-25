@@ -38,7 +38,7 @@ class Trip < ActiveRecord::Base
   end
   
   def inform_client_by_sms
-    SmsDealer.send self.client.email, "Здравствуйте, за последний заказ такси вам начислено #{self.bonus_point} баллов!"
+    SmsDealer.send self.client.email, "Такси СТ благодарит за поездку. Данная поездка Вам принесла #{self.bonus_point} баллов (Всего: #{self.client.result_bonus} баллов). Выбирай призы на 3001300.ru"
   end
   
 

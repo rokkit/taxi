@@ -5,9 +5,9 @@ class Client < User
   include SMS
   
 #include ActiveModel::Dirty
-  has_many :trips
+  has_many :trips, dependent: :destroy
   belongs_to :bonus_program
-  has_one :account
+  has_one :account, dependent: :destroy
   belongs_to :natural_person
 
 
@@ -28,6 +28,10 @@ class Client < User
 
  def to_s
    "#{self.natural_person.try { |n| n.full_name.force_encoding("cp1251").encode("utf-8", undef: :replace)} } (+#{email})"
+ end
+ 
+ def result_bonus
+   self.total_bonus - self.windrawed_bonus
  end
  
  # def fio=(value)
