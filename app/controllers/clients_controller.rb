@@ -99,7 +99,7 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.order("id DESC").limit(1)
+    @orders = Orders.order("id DESC").limit(5)
     @orders.each do |order|
       if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
         if order.tel_call_back.present?
