@@ -10,7 +10,7 @@ development:
       uid: '17839'
       private_api_key: 'fnbxqfzrnd'
       pid: '19453'
-      sender: '79626852824'
+      sender: '300-1-300'
 test:
     twilio:
       from: '+12692056408'
@@ -23,7 +23,7 @@ test:
       uid: '17839'
       private_api_key: 'fnbxqfzrnd'
       pid: '19453'
-      sender: '79626852824'
+      sender: '300-1-300'
 production:
     twilio:
       from: '+12692056408'
@@ -33,4 +33,4 @@ production:
       uid: '17839'
       private_api_key: 'fnbxqfzrnd'
       pid: '19453'
-      sender: 'Taxi300'
+      sender: '300-1-300'
