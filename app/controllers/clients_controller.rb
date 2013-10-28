@@ -37,7 +37,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     #@trips = Trip.all
-    @orders = @client.natural_person.orders.order("datetime_from DESC")
+    @orders = @client.natural_person.orders.where(id_closed_result: 5).where.not(cost_plan: 0).limit(10).order("[dbo].[orders].[id] DESC")
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
     # @total_bonus = Orders::calculate_total_bonus @client
     @total_bonus = (@client.total_bonus) - @client.windrawed_bonus
@@ -99,23 +99,24 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.order("id DESC").limit(5)
+    @orders = Orders.where(id_closed_result: 5).joins(:natural_person).where.not(cost_plan: 0).limit(10).order("[dbo].[orders].[id] DESC")
     @orders.each do |order|
-      if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
-        if order.tel_call_back.present?
-          @phone = order.tel_call_back
-        else
+        if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
           @phone = order.natural_person.contacts.first.contact_content
+          if order.tel_call_back.present?
+            @phone = order.tel_call_back
+          else
+            @phone = order.natural_person.contacts.first.contact_content
+          end
+          @client = Client.new(email: @phone, bonus_program: BonusProgram.first, natural_person: order.natural_person)
+          @client.save!
         end
-        @client = Client.new(email: @phone, bonus_program: BonusProgram.first, natural_person: order.natural_person)
-        @client.save!
-      end
-      order.reload
-      if order.trip.nil? and order.natural_person.present? and order.natural_person.client.present?
-        trip = Trip.new orders: order, client: order.natural_person.client
-        trip.add_bonus_points
-        render text: "error: #{trip.errors}" if !trip.save
-      end
+        order.reload
+        if order.trip.nil? and order.natural_person.present? and order.natural_person.client.present? and order.cost_plan > 0
+          trip = Trip.new orders: order, client: order.natural_person.client
+          trip.add_bonus_points
+          render text: "error: #{trip.errors}" if !trip.save!
+        end
     end
     render text: "finish"
   end

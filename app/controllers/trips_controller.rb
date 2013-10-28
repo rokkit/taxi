@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @orders = Orders.includes(:natural_person).limit(15).order("[dbo].[orders].[id] DESC")
+    @orders = Orders.where(id_closed_result: 5).joins(:natural_person).where.not(cost_plan: 0).limit(10).order("[dbo].[orders].[id] DESC")
   end
 
   # GET /trips/1
