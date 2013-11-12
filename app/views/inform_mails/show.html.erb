@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @inform_mail.client %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @inform_mail.body %>
+</p>
+
+<%= link_to 'Edit', edit_inform_mail_path(@inform_mail) %> |
+<%= link_to 'Back', inform_mails_path %>

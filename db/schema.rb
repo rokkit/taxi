@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018104439) do
+ActiveRecord::Schema.define(version: 20131112000254) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total",      precision: 18, scale: 0
@@ -41,6 +41,23 @@ ActiveRecord::Schema.define(version: 20131018104439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "human_name"
+  end
+
+  create_table "inform_mails", force: true do |t|
+    t.integer  "client_id"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inform_mails", ["client_id"], name: "index_inform_mails_on_client_id"
+
+  create_table "message_texts", force: true do |t|
+    t.text     "content"
+    t.integer  "message_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "sms"
   end
 
   create_table "roles", force: true do |t|

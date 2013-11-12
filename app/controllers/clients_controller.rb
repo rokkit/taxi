@@ -120,6 +120,9 @@ class ClientsController < ApplicationController
     end
     render text: "finish"
   end
+  
+  def set_check
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

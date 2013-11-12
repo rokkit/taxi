@@ -1,5 +1,9 @@
 Taxi::Application.routes.draw do
 
+  resources :inform_mails do
+    get :change_text, on: :collection
+    get :do_change_text, on: :collection
+  end
 
   resources :activities
   resources :bonus_programs
@@ -15,6 +19,7 @@ Taxi::Application.routes.draw do
       get :autocomplete_natural_person_name, on: :collection
       get :check, on: :collection
       post :windraw_bonus_points, on: :member
+      get :set_check, on: :collection
     end
     resources :operators
     resources :trips do

@@ -38,7 +38,7 @@ class Trip < ActiveRecord::Base
   end
   
   def inform_client_by_sms
-    SmsDealer.send self.client.email, "Такси СТ благодарит за поездку. Данная поездка Вам принесла #{self.bonus_point} баллов (Всего: #{self.client.result_bonus} баллов). Выбирай призы на 3001300.ru"
+    InformMail.create client: self.client, body: "Данная поездка Вам принесла #{self.bonus_point} баллов (Всего: #{self.client.result_bonus} баллов)"
   end
   
 

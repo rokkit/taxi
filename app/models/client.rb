@@ -74,8 +74,8 @@ class Client < User
       #body: "#{gen_pass}"
     #)
     #self.password = Devise.friendly_token.first(6)
-    self.password = Devise.friendly_token.first(6)
-    SmsDealer.send self.email, "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
+    self.password = (0..10).to_a[rand(10)].to_s + (0...5).map{ ('a'..'z').to_a[rand(26)] }.join
+    InformMail.create client: self, body: "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
   end
 
   def assign_bonus_program

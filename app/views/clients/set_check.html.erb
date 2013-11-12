@@ -1,0 +1,15 @@
+
+d
+
+<script type='text/javascript'>
+    console.log("ok");
+    function doPoll(){
+        $.post('/api/clients/check', function(data) {
+            console.log(data);  // process results here
+            setTimeout(doPoll,5000);
+        });
+    }
+    $(function(){
+        doPoll();
+    });
+</script>

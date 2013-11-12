@@ -1,0 +1,23 @@
+<h1>Отправленные сообщения</h1>
+<%= link_to "Изменить текст", change_text_inform_mails_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Клиент</th>
+      <th>Сообщение</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inform_mails.each do |inform_mail| %>
+      <tr>
+        <td><%= inform_mail.client %></td>
+        <td><%= inform_mail.body.force_encoding("cp1251").encode("utf-8", undef: :replace) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Отправить сообщение', new_inform_mail_path %>
