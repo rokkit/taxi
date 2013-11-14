@@ -38,7 +38,8 @@ class Trip < ActiveRecord::Base
   # end
   
   def inform_client_by_sms
-    body = "Такси СТ благодарит за поездку. Вам начислено {bonus_point}  балл(а, ов) (Всего: {result_bonus} балл(а, ов)). Выбирай призы на 3001300.ru"
+    # body = "Такси СТ благодарит за поездку. Вам начислено {bonus_point}  балл(а, ов) (Всего: {result_bonus} балл(а, ов)). Выбирай призы на 3001300.ru"
+    body = MessageText.trip.sms.encode
     body.sub! "{bonus_point}", self.bonus_point.to_s
     body.sub! "{result_bonus}", self.client.result_bonus.to_s
     # puts body.encode("cp1251")

@@ -19,11 +19,11 @@ class InformMailsController < ApplicationController
   end
   
   def do_change_text
-    if m = MessageText.welcome
+    if params[:message_welcome_text].present? && m = MessageText.welcome
       # m.update_attributes(params[:message_welcome_text].permit!)
       m.update_attribute :sms, params[:message_welcome_text][:sms].encode("cp1251")
     end
-    if m = MessageText.trip
+    if params[:message_trip_text].present? && m = MessageText.trip
       # m.update_attributes(params[:message_welcome_text].permit!)
       m.update_attribute :sms, params[:message_trip_text][:sms].encode("cp1251")
     end
