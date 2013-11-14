@@ -1,9 +1,5 @@
-<h1>Отправленные сообщенияm</h1>
+<h1>Отправленные сообщения</h1>
 
-<p>
-    <h3>Приветствие</h3>
-    <p><%= MessageText.welcome.content %></p>
-</p>
 <%= link_to "Изменить текст", change_text_inform_mails_path %>
 <table>
   <thead>
@@ -17,7 +13,7 @@
     <% @inform_mails.each do |inform_mail| %>
       <tr>
         <td><%= inform_mail.client %></td>
-        <td><%= inform_mail.body.force_encoding("cp1251").encode("utf-8", undef: :replace) %></td>
+        <td><%= inform_mail.body.encode %></td>
       </tr>
     <% end %>
   </tbody>

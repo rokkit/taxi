@@ -1,4 +1,4 @@
-#encoding: cp1251
+# encoding: utf-8
 class InformMailsController < ApplicationController
   before_action :set_inform_mail, only: [:show, :edit, :update, :destroy]
 
@@ -9,14 +9,16 @@ class InformMailsController < ApplicationController
   end
   
   def change_text
-    @message_welcome_text = MessageText.welcome || MessageText.new(message_type: 1)
+    @message_welcome_text = MessageText.welcome || MessageText.create(message_type: 1)
+    @message_welcome_text =  MessageText.create(message_type: 1) if @message_welcome_text.nil?
+    # @message_welcome_text.sms = @message_welcome_text.sms.encode!
+    @message_welcome_text.sms = @message_welcome_text.sms.encode.encode
+    
   end
   
   def do_change_text
-    if m = MessageText.first
-      m.update_attributes(content: params[:message_text][:content].encoding, sms: params[:message_text][:sms])
-    else
-      MessageText.create! params[:message_text].permit!
+    if m = MessageText.welcome
+      m.update_attributes(params[:message_welcome_text].permit!)
     end
     redirect_to change_text_inform_mails_path
   end
