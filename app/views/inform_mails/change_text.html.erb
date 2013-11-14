@@ -1,4 +1,5 @@
-<%= semantic_form_for @message_text, url: do_change_text_inform_mails_path, method: "get" do |f| %>
+<h1>Приветствие</h1>
+<%= semantic_form_for @message_welcome_text, url: do_change_text_inform_mails_path, method: "get" do |f| %>
   <%= f.inputs do %>
     <%= f.input :content %>
     <%= f.input :sms %>

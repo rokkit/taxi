@@ -4,7 +4,7 @@ class InformMail < ActiveRecord::Base
   
   belongs_to :client
   
-  belongs_to :user
+  # belongs_to :user
   
    after_create :send_email_and_sms
   

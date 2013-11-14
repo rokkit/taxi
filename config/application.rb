@@ -27,6 +27,7 @@ module Taxi
     # config.i18n.default_locale = :de
     # config.encoding = "utf-8"
     config.autoload_paths += %W(#{config.root}/lib/srvices/)
+    # config.encoding = "cp1251"
     
     config.i18n.default_locale = :ru
     config.generators do |g|

@@ -7,17 +7,18 @@ class Client < User
 #include ActiveModel::Dirty
   has_many :trips, dependent: :destroy
   belongs_to :bonus_program
-  has_one :account, dependent: :destroy
+  # has_one :account, dependent: :destroy
   belongs_to :natural_person
 
 
-  after_save :bonus_program_changed_callback#, :if => bonus_program.changed?
- before_create :create_account, :assign_bonus_program, :generate_and_send_password
+  # after_save :bonus_program_changed_callback#, :if => bonus_program.changed?
+ # before_create  :generate_and_send_password
+ after_create :generate_and_send_password
  
  validates :natural_person, presence: true
 
 
-  accepts_nested_attributes_for :account
+  # accepts_nested_attributes_for :account
    include PublicActivity::Model
   tracked
 
@@ -57,13 +58,13 @@ class Client < User
  end
    
   private
-  def create_account
-    pwd =  Devise.friendly_token.first 6
-    self.password = self.password_confirmation = pwd
-    # Inform.send_password_info(self, pwd).deliver
-    self.roles << Role.where(name: "client").first_or_create
-      self.account = Account.create total: 0
-  end
+  # def create_account
+  #   # pwd =  Devise.friendly_token.first 6 
+  #   # self.password = self.password_confirmation = pwd
+  #   # Inform.send_password_info(self, pwd).deliver
+  #   
+  #     # self.account = Account.create total: 0
+  # end
 
   def generate_and_send_password
     #gen_pass = Devise.friendly_token.first(6)
@@ -74,13 +75,21 @@ class Client < User
       #body: "#{gen_pass}"
     #)
     #self.password = Devise.friendly_token.first(6)
-    self.password = (0..10).to_a[rand(10)].to_s + (0...5).map{ ('a'..'z').to_a[rand(26)] }.join
-    InformMail.create client: self, body: "Здравствуйте, вы зарегистрированы в бонусной программе! Ваш пароль #{self.password}"
+    # self.roles << Role.where(name: "client").first_or_create
+    self.reload
+    update_attribute :password, ('a'..'z').to_a[rand(26)].to_s + (0...5).map{ [rand(10)] }.join
+    post_data = Net::HTTP.post_form URI.parse('http://3001300.ru/create_client_from_bonus.php'),
+     { 
+       'email' => self.email,
+       'password' =>  self.password
+     }
+    mail = InformMail.create! client: self, body: "Здравствуйте, вы зарегистрированы в бонусной программе такси 300-1-300! Ваш пароль #{self.password}"
   end
 
   def assign_bonus_program
-    self.bonus_program = BonusProgram.where(name: "Bazovaya").first_or_create
+    self.bonus_program = BonusProgram.where(name: "Bazovaya").first_or_create if self.bonus_program.nil?
   end
+  
 
  def bonus_program_changed_callback
    if self.bonus_program_id_changed?

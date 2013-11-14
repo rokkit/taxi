@@ -8,8 +8,9 @@ module SMS
     def self.send to, body
       @to = to.to_s
       @to = "79626853050"
-      @to[0] = "7" if @to[0] == 8
-      @to = "7#{@to}" if @to[0] == 9
+      @to = "79523707281"
+      
+      # @to = "7#{@to}" if @to[0] == 9
       @body = body.to_s
       post_data = Net::HTTP.post_form URI.parse('http://api.lk.smsdiler.ru/delivery.sendSms'),
        { 

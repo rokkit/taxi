@@ -61,7 +61,7 @@ gem 'public_activity', git: 'https://github.com/pokonski/public_activity.git'
 gem 'kaminari'
 # gem 'odbc'
 gem 'ruby-odbc'
-gem "thin"
+# gem "thin"
 
 gem 'activerecord-sqlserver-adapter', git: 'https://github.com/arthrex/activerecord-sqlserver-adapter'
 
