@@ -32,13 +32,17 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  private
+  # private
   # def windraw_bonus_points
   #   self.client.account.windraw_bonus_points bonus_point
   # end
   
   def inform_client_by_sms
-    InformMail.create client: self.client, body: "Такси СТ благодарит за поездку. Данная поездка Вам принесла #{self.bonus_point} баллов (Всего: #{self.client.result_bonus} баллов). Выбирай призы на 3001300.ru"
+    body = "Такси СТ благодарит за поездку. Вам начислено {bonus_point}  балл(а, ов) (Всего: {result_bonus} балл(а, ов)). Выбирай призы на 3001300.ru"
+    body.sub! "{bonus_point}", self.bonus_point.to_s
+    body.sub! "{result_bonus}", self.client.result_bonus.to_s
+    # puts body.encode("cp1251")
+    InformMail.create client: self.client, body: body.encode("cp1251")
   end
   
 

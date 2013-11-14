@@ -12,7 +12,7 @@ class InformMail < ActiveRecord::Base
   
    def send_email_and_sms
      
-     SmsDealer.send self.client.email, body
+     SmsDealer.send self.client.email, body.encode
      
    end
 end

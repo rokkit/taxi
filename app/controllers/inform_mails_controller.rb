@@ -10,15 +10,22 @@ class InformMailsController < ApplicationController
   
   def change_text
     @message_welcome_text = MessageText.welcome || MessageText.create(message_type: 1)
-    @message_welcome_text =  MessageText.create(message_type: 1) if @message_welcome_text.nil?
+    @message_trip_text = MessageText.trip || MessageText.create(message_type: 2)
+    # @message_welcome_text =  MessageText.create(message_type: 1) if @message_welcome_text.nil?
     # @message_welcome_text.sms = @message_welcome_text.sms.encode!
-    @message_welcome_text.sms = @message_welcome_text.sms.encode.encode
+    @message_welcome_text.sms.encode! if @message_welcome_text.sms.present?
+    @message_trip_text.sms.encode! if @message_trip_text.sms.present?
     
   end
   
   def do_change_text
     if m = MessageText.welcome
-      m.update_attributes(params[:message_welcome_text].permit!)
+      # m.update_attributes(params[:message_welcome_text].permit!)
+      m.update_attribute :sms, params[:message_welcome_text][:sms].encode("cp1251")
+    end
+    if m = MessageText.trip
+      # m.update_attributes(params[:message_welcome_text].permit!)
+      m.update_attribute :sms, params[:message_trip_text][:sms].encode("cp1251")
     end
     redirect_to change_text_inform_mails_path
   end
@@ -41,10 +48,10 @@ class InformMailsController < ApplicationController
   # POST /inform_mails.json
   def create
     @inform_mail = InformMail.new(inform_mail_params)
-
+    @inform_mail.body.encode!("cp1251")
     respond_to do |format|
       if @inform_mail.save
-        format.html { redirect_to @inform_mail, notice: 'Inform mail was successfully created.' }
+        format.html { redirect_to inform_mails_path, notice: 'Inform mail was successfully created.' }
         format.json { render action: 'show', status: :created, location: @inform_mail }
       else
         format.html { render action: 'new' }

@@ -70,3 +70,11 @@ mssql:
   password: Q1m52a63
   timeout: 5000
   encoding: "cp1251"
+  
+# messages:
+#   adapter: sqlite3
+#   database: db/messages.sqlite3
+#   pool: 5
+#   timeout: 5000
+#   encoding: utf-8
+

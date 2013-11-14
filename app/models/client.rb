@@ -67,15 +67,6 @@ class Client < User
   # end
 
   def generate_and_send_password
-    #gen_pass = Devise.friendly_token.first(6)
-    #client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
-    #client.account.sms.messages.create(
-      #from: APP['twilio']['from'],
-      #to: "+#{self.email}",
-      #body: "#{gen_pass}"
-    #)
-    #self.password = Devise.friendly_token.first(6)
-    # self.roles << Role.where(name: "client").first_or_create
     self.reload
     update_attribute :password, ('a'..'z').to_a[rand(26)].to_s + (0...5).map{ [rand(10)] }.join
     post_data = Net::HTTP.post_form URI.parse('http://3001300.ru/create_client_from_bonus.php'),
@@ -83,7 +74,7 @@ class Client < User
        'email' => self.email,
        'password' =>  self.password
      }
-    mail = InformMail.create! client: self, body: "Здравствуйте, вы зарегистрированы в бонусной программе такси 300-1-300! Ваш пароль #{self.password}"
+    mail = InformMail.create! client: self, body: "#{MessageText.welcome.sms.encode} #{self.password}".encode("cp1251")
   end
 
   def assign_bonus_program
