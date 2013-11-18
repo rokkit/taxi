@@ -102,16 +102,10 @@ class ClientsController < ApplicationController
     @orders = Orders.actual.limit(5).order("[dbo].[orders].[id] DESC")
     @orders.each do |order|
         if !order.natural_person.try(:client)
-          # @phone = order.natural_person.contacts.first.contact_content
-          # if order.tel_call_back.present?
-          #   @phone = order.tel_call_back
-          # else
-          #   @phone = order.tel
-          # end
           @phone = order.tel_call_back || order.tel
           if @phone.size > 9
              @phone = "7#{@phone}" if @phone.size == 10
-             @phone[0] = "7" if @phone[0] == 8
+             @phone[0] = "7" if @phone[0] == "8"
              @client = Client.new(email: @phone, bonus_program: BonusProgram.first, natural_person: order.natural_person)
              @client.save!
           end

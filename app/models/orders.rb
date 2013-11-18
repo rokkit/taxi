@@ -4,7 +4,7 @@ class Orders < ActiveRecord::Base
   belongs_to :natural_person, foreign_key: "id_client"
   has_one :trip
   
-  scope :actual, -> { where(id_state: 3).joins(:natural_person).where.not(cost_plan: 0) }
+  scope :actual, -> { where(id_state: 6).joins(:natural_person).where.not(cost_plan: 0) }
   
    def self.calculate_total_bonus client
       orders = client.natural_person.orders
