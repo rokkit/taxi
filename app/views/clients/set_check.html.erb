@@ -1,15 +1,22 @@
 
-d
+<div id="info-time"></div>
+
 
 <script type='text/javascript'>
-    console.log("ok");
-    function doPoll(){
-        $.post('/api/clients/check', function(data) {
-            console.log(data);  // process results here
+$(function(){
+
+    // console.log("ok");
+    // var d = new Date()
+    function doPoll(d){
+        $.get('/api/clients/check', function(data) {
+            // console.log(data);  // process results here
+            // $("#info-time").html("Последнее обновление:" + d.getHours());
             setTimeout(doPoll,5000);
         });
     }
     $(function(){
         doPoll();
     });
+});
+    
 </script>
