@@ -2,7 +2,7 @@
 <%= semantic_form_for @message_welcome_text, url: do_change_text_inform_mails_path, method: "get" do |f| %>
   <%= f.inputs do %>
     <%# f.input :content, input_html: { name: "message_welcome_text[content]" } %>
-    <%= f.input :sms, input_html: { name: "message_welcome_text[sms]" } %>
+    <%= f.input :sms, input_html: { name: "message_welcome_text[sms]", rows: '5', style: "width: 400px;" } %>
   <% end %>
 
   <%= f.actions do %>
@@ -15,7 +15,7 @@
 <%= semantic_form_for @message_trip_text, url: do_change_text_inform_mails_path, method: "get" do |f| %>
   <%= f.inputs do %>
     <%# f.input :content, input_html: { name: "message_welcome_text[content]" } %>
-    <%= f.input :sms, input_html: { name: "message_trip_text[sms]" } %>
+    <%= f.input :sms, input_html: { name: "message_trip_text[sms]", rows: '5', style: "width: 400px;" } %>
   <% end %>
 
   <%= f.actions do %>

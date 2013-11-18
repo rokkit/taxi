@@ -1,11 +1,12 @@
 <h1>Отправленные сообщения</h1>
 
 <%= link_to "Изменить текст", change_text_inform_mails_path %>
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Клиент</th>
       <th>Сообщение</th>
+      <th>Дата отправки</th>
     </tr>
   </thead>
 
@@ -14,6 +15,7 @@
       <tr>
         <td><%= inform_mail.client %></td>
         <td><%= inform_mail.body.encode %></td>
+        <td><%= inform_mail.created_at.strftime("%d.%m.%Y %R") %></td>
       </tr>
     <% end %>
   </tbody>

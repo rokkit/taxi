@@ -2,7 +2,10 @@
 <table class="table table-striped">
   <thead>
     <th>Дата</th>
-    <% unless current_user.role? :client %><th>Клиент</th><% end %>
+    <% unless current_user.role? :client %>
+        <th>Клиент</th>
+        <th>Телефон</th>
+    <% end %>
     <th>Длина маршрута</th>
 
     <th>Полная стоимость</th>
@@ -24,6 +27,7 @@
                 <%= link_to  order.natural_person.client.to_s.encode,  order.natural_person.client %>
               <% end %>
                         </td>
+                        <td><%= order.tel_call_back || order.tel %></td>
             <% end %>
 
           <td><%= order.route_length %></td>

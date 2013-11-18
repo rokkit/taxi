@@ -5,7 +5,7 @@ class InformMailsController < ApplicationController
   # GET /inform_mails
   # GET /inform_mails.json
   def index
-    @inform_mails = InformMail.all
+    @inform_mails = InformMail.all.order("id DESC")
   end
   
   def change_text

@@ -37,7 +37,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     #@trips = Trip.all
-    @orders = @client.natural_person.orders.where(id_closed_result: 5).where.not(cost_plan: 0).limit(10).order("[dbo].[orders].[id] DESC")
+    @orders = @client.natural_person.orders.actual.limit(10).order("[dbo].[orders].[id] DESC")
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
     # @total_bonus = Orders::calculate_total_bonus @client
     @total_bonus = (@client.total_bonus) - @client.windrawed_bonus
@@ -99,15 +99,16 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.where(id_closed_result: 5).joins(:natural_person).where.not(cost_plan: 0).limit(5).order("[dbo].[orders].[id] DESC")
+    @orders = Orders.actual.limit(5).order("[dbo].[orders].[id] DESC")
     @orders.each do |order|
-        if order.natural_person.try { |np| np.contacts.first.contact_content } && !order.natural_person.try(:client)
-          @phone = order.natural_person.contacts.first.contact_content
-          if order.tel_call_back.present?
-            @phone = order.tel_call_back
-          else
-            @phone = order.natural_person.contacts.first.contact_content
-          end
+        if !order.natural_person.try(:client)
+          # @phone = order.natural_person.contacts.first.contact_content
+          # if order.tel_call_back.present?
+          #   @phone = order.tel_call_back
+          # else
+          #   @phone = order.tel
+          # end
+          @phone = order.tel_call_back || order.tel
           if @phone.size > 9
              @phone = "7#{@phone}" if @phone.size == 10
              @phone[0] = "7" if @phone[0] == 8
