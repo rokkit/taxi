@@ -9,7 +9,7 @@ class NaturalPerson < ActiveRecord::Base
      (name ? where(["name LIKE ? or surname LIKE ? or (name + ' ' + surname) like ?", '%'+ name + '%', '%'+ name + '%','%'+ name + '%' ])  : {})
    }
   def full_name
-    phone = contacts.first.contact_content
+    phone = contacts.first.try :contact_content
     "#{name} #{self.try(:surname)} - #{phone}"
   end
 
