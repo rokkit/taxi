@@ -1,9 +1,9 @@
 # encoding: windows-1251
 class ClientsController < ApplicationController
   autocomplete :natural_person, :name, display_value: :full_name, scoped: [:search_by_full_name]
-  before_filter :authenticate_user!, except: [:set_check]
+  before_filter :authenticate_user!, except: :set_check
   before_filter :load_resource, only: :create
-  load_and_authorize_resource
+  load_and_authorize_resource except: :set_check
   before_action :set_client, only: [:show, :edit, :update, :destroy, :windraw_bonus_points]
   #def get_autocomplete_items(parameters)
     #super(parameters).search_by_full_name params[:q]
