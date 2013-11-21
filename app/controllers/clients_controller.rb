@@ -111,7 +111,7 @@ class ClientsController < ApplicationController
           end
         end
         order.reload
-        if order.trip.nil? and order.natural_person.present? and order.natural_person.client.present? and order.cost_plan > 0
+        if order.trip.nil? and order.natural_person.present? and order.natural_person.client.present? and order.cost > 0
           trip = Trip.new orders: order, client: order.natural_person.client
           trip.add_bonus_points
           render text: "error: #{trip.errors}" if !trip.save!

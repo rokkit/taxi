@@ -3,7 +3,7 @@
 
 Дата <%= @trip.orders.datetime_from %>
 Длина пути: <%= @trip.orders.route_length %>
-Стоимость: <%= @trip.orders.cost_plan %> ( <%= @trip.orders.cost %>)
+Стоимость: <%= @trip.orders.cost %> ( <%= @trip.orders.cost %>)
 
 <%= semantic_form_for @trip do |f| %>
   <div class="trip-form">

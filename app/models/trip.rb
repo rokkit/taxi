@@ -28,7 +28,7 @@ class Trip < ActiveRecord::Base
   end
   def add_bonus_points
     if self.bonus_point.to_f == 0
-      self.bonus_point = self.orders.cost_plan.to_f / self.client.bonus_program.rate.to_f
+      self.bonus_point = self.orders.cost.to_f / self.client.bonus_program.rate.to_f
     end
   end
 

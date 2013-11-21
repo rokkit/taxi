@@ -31,7 +31,7 @@
             <% end %>
 
           <td><%= order.route_length %></td>
-          <td><%= order.cost_plan %></td>
+          <td><%= order.cost %></td>
           <td>
               <% if order.trip.try { |t| t.bonus_point.present? }  %>
               <%= order.trip.try(:bonus_point) %>
