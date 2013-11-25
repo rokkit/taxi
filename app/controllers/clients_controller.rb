@@ -99,7 +99,7 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.actual.limit(10).order("[dbo].[orders].[id] DESC")
+    @orders = Orders.actual.limit(params[:count] || 10).order("[dbo].[orders].[id] DESC")
     @orders.each do |order|
         if !order.natural_person.try(:client)
           @phone = order.tel_call_back || order.tel

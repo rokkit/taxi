@@ -14,9 +14,9 @@ $(function(){
             setTimeout(doPoll,5000);
         });
     }
-    $(function(){
-        doPoll();
-    });
+        $.get('/api/clients/check',{count: '50'}, function(data) {
+            doPoll();
+        });
 });
     
 </script>
