@@ -99,7 +99,7 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.actual.limit(params[:count] || 10).order("[dbo].[orders].[id] DESC")
+    @orders = Orders.actual.limit(params[:count] || 10).order("[dbo].[orders].[datetime_to_archive] DESC")
     @orders.each do |order|
         if !order.natural_person.try(:client)
           @phone = order.tel_call_back || order.tel
@@ -108,7 +108,7 @@ class ClientsController < ApplicationController
              @phone[0] = "7" if @phone[0] == "8"  
              unless Client.find_by_email @phone
                @client = Client.new(email: @phone, bonus_program: BonusProgram.first, natural_person: order.natural_person)
-               @client.save
+               @client.save!
              end
           end
         end

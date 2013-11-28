@@ -1,7 +1,8 @@
 <table>
 <table class="table table-striped">
   <thead>
-    <th>Дата</th>
+    <th>Дата создания</th>
+    <th>Дата архивирирования</th>
     <% unless current_user.role? :client %>
         <th>Клиент</th>
         <th>Телефон</th>
@@ -16,8 +17,8 @@
     <% @orders.each do |order| %>
         <% if order.natural_person.present? %>
         <tr>
-          <td><%= order.datetime_from.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
-
+          <td><%= order.create_date_time.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
+          <td><%= order.datetime_to_archive.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
             <% unless order.natural_person.nil? || current_user == order.natural_person.client %>
                                   <td>
               <% if order.natural_person.client.nil? %>
@@ -29,7 +30,7 @@
                         </td>
                         <td><%= order.tel_call_back || order.tel %></td>
             <% end %>
-
+            
           <td><%= order.route_length %></td>
           <td><%= order.cost %></td>
           <td>

@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @orders = Orders.actual.limit(10).order("[dbo].[orders].[id] DESC")
+    @orders = Orders.actual.limit(10).order("[dbo].[orders].[datetime_to_archive] DESC")
   end
 
   # GET /trips/1

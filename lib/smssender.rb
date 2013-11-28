@@ -10,6 +10,7 @@ module SMS
       
       # @to = "7#{@to}" if @to[0] == 9
       @body = body.to_s
+      begin
       post_data = Net::HTTP.post_form URI.parse('http://api.lk.smsdiler.ru/delivery.sendSms'),
        { 
          'uid' => APP['smsdealer']['uid'],
@@ -20,6 +21,9 @@ module SMS
          'sig' => self.signature()
        }
        handle_respond post_data.body
+     rescue Exception => e
+       puts "exception"
+     end
     end
   
     private 
