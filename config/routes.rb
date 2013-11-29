@@ -20,7 +20,7 @@ Taxi::Application.routes.draw do
       get :check, on: :collection
       post :windraw_bonus_points, on: :member
       get :set_check, on: :collection
-      member {
+      collection {
         get :bonus_points
       }
     end

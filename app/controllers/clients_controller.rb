@@ -4,6 +4,7 @@ class ClientsController < ApplicationController
   before_filter :authenticate_user!, except: [:set_check, :check, :bonus_points]
   before_filter :load_resource, only: :create
   load_and_authorize_resource except: [:set_check, :check, :bonus_points]
+  
   before_action :set_client, only: [:show, :edit, :update, :destroy, :windraw_bonus_points]
   #def get_autocomplete_items(parameters)
     #super(parameters).search_by_full_name params[:q]
@@ -99,7 +100,12 @@ class ClientsController < ApplicationController
   end
   
   def bonus_points
-    render json: [points: @client.result_bonus]
+    @client = Client.find_by_email params[:phone]
+    if @client
+      render json: [points: @client.result_bonus]
+    else
+      render json: [points: nil]
+    end
   end
   
   def check

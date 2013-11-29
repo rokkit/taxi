@@ -13,7 +13,7 @@ development:
   database: bonustaxi
   username: bonus
   password: Q1m52a63
-  timeout: 5000
+  timeout: 0
   encoding: "cp1251"
   
 
@@ -45,7 +45,7 @@ production:
   database: bonustaxi
   username: bonus
   password: Q1m52a63
-  timeout: 5000
+  timeout: 0
   encoding: "cp1251"
   
 
@@ -68,7 +68,7 @@ mssql:
   database: besttaxi
   username: bonus
   password: Q1m52a63
-  timeout: 5000
+  timeout: 0 
   encoding: "cp1251"
   
 # messages:
