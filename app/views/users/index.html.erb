@@ -19,7 +19,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @users %>
 <br>
 
 <%= link_to 'Добавить пользователя', new_user_path, class: "btn btn-success entypo-plus-squared" %>

@@ -22,6 +22,7 @@ Taxi::Application.routes.draw do
       get :set_check, on: :collection
       collection {
         get :bonus_points
+        get :search
       }
     end
     resources :operators

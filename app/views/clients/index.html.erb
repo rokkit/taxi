@@ -1,6 +1,10 @@
 <h1>Клиенты c бонусной программой</h1>
 
-<h4><%= link_to "Автодобавление новых клиентов", set_check_clients_path  %></h4>
+<%= form_tag search_clients_path, method: :get do %>
+    <%= number_field_tag :email %>
+    <%= submit_tag "Поиск" %>
+<% end %>
+
 <%# link_to 'Добавить', new_client_path, class: "btn btn-success entypo-plus-squared" %>
 
 <table class="table table-striped datatable">
@@ -23,6 +27,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @clients %>
 
 <br>
 

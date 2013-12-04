@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   
   
   
-  
 
   private
   def generate_and_send_password_by_sms

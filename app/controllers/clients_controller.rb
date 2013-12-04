@@ -12,7 +12,15 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.order(:email).page(params[:page]).per(30)
+  end
+  
+  def search
+    if @client = Client.find_by_email(params[:email])
+      redirect_to @client
+    else
+      redirect_to clients_path
+    end
   end
   
   def windraw_bonus_points

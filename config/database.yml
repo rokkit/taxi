@@ -40,7 +40,7 @@ production:
   adapter: sqlserver
   mode: dblib
   dsn: taxibonus_dsn
-  host: localhost
+  host: 5.17.148.22
   port: 49157           # Used if host present. Default is 1433.
   database: bonustaxi
   username: bonus
