@@ -1,4 +1,12 @@
-<h1>Журнал действий операторов</h1>
+<h3>Статистика</h3>
+<%= form_tag activities_path, method: :get do %>
+    <%= text_field_tag :day, Date.today.to_s,class: "datepicker" %>
+    <%= submit_tag "Показать статистику за день" %>
+<% end %>
+<h4>Обработано заказов за <%= params[:day] || "сегодня" %>: <%= @today_trips.count %></h4>
+<h4>Бонусных баллов за <%= params[:day] || "сегодня" %>: <%= @bonus_points_per_day %></h4>
+
+<h3>Журнал событий</h3>
 <% @activities.each do |activity| %>
   <div class="activity">
     <%# activity.owner activity.owner if activity.owner %>

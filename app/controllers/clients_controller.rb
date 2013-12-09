@@ -46,6 +46,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     #@trips = Trip.all
+    #
     @orders = @client.natural_person.orders.actual.limit(10).order("[dbo].[orders].[id] DESC")
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
     # @total_bonus = Orders::calculate_total_bonus @client

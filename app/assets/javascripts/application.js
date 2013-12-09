@@ -20,3 +20,6 @@
 //= require pickadate/picker.date
 //= require pickadate/picker.time
 
+$(function() {
+  $('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
+});
