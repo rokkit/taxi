@@ -21,9 +21,9 @@ private
       if order.natural_person.present?
         [
         
-            order.create_date_time.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M"),
-            order.datetime_to_archive.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M"),
-            link_to(order.natural_person.client.to_s.encode,  order.natural_person.client),
+            order.create_date_time.try { |r| r.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") },
+            order.datetime_to_archive.try { |r| r.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") },
+            (link_to(order.natural_person.client.to_s.encode,  order.natural_person.client) || order.natural_person),
             (order.tel_call_back || order.tel),
             order.route_length,
             order.cost,
