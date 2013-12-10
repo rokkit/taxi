@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
   def show
     #@trips = Trip.all
     #
-    @orders = @client.natural_person.orders.actual.limit(10).order("[dbo].[orders].[id] DESC")
+    @orders = @client.natural_person.orders.actual.order("[dbo].[orders].[id] DESC").page(params[:page]).per(10)
     #@orders.each { |o| o.trip = Trip.create if o.trip.nil? }
     # @total_bonus = Orders::calculate_total_bonus @client
     @total_bonus = (@client.total_bonus) - @client.windrawed_bonus
