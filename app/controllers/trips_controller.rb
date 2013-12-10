@@ -11,6 +11,10 @@ class TripsController < ApplicationController
   # GET /trips.json
   def index
     @orders = Orders.actual.order("[dbo].[orders].[datetime_to_archive] DESC").page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.json { render json: TripsDatatable.new(view_context) }
+    end
   end
 
   # GET /trips/1

@@ -118,11 +118,12 @@ class ClientsController < ApplicationController
   end
   
   def check
-    @orders = Orders.actual.limit(50).order("[dbo].[orders].[datetime_to_archive] DESC")
+    @orders = Orders.actual.order("[dbo].[orders].[datetime_to_archive] DESC").limit(20)
     @orders.each do |order|
         if !order.natural_person.try(:client)
           @phone = order.tel_call_back || order.tel
           if @phone.size > 9
+             @phone = "7#{@phone[4..@phone.size]}" if @phone[0..3] == '8812'
              @phone = "7#{@phone}" if @phone.size == 10
              @phone[0] = "7" if @phone[0] == "8"  
              client = Client.find_by_email @phone

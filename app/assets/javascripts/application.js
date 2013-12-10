@@ -16,10 +16,5 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require twitter/bootstrap
-//= require pickadate/picker
-//= require pickadate/picker.date
-//= require pickadate/picker.time
+//= require_tree .
 
-$(function() {
-  $('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
-});
