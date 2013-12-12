@@ -1,5 +1,5 @@
 $.datepicker.setDefaults({
-     dateFormat: 'yy-mm-dd'
+     dateFormat: 'dd.mm.yy'
 })
 
 $(document).ready ->
@@ -65,11 +65,11 @@ jQuery ->
         oAria:
           sSortAscending: ": активировать для сортировки столбца по возрастанию"
           sSortDescending: ": активировать для сортировки столбцов по убыванию"
-    )# .columnFilter 
-#           sPlaceHolder: "head:after"
-#           aoColumns: [
-#                         {type: "date-range" }, {type: "date-range" }, null, null, null, null, null
-#                       ]
+    ).columnFilter 
+          # sPlaceHolder: "head:after"
+          aoColumns: [
+                        {type: "date-range" }, {type: "date-range" }, null, null, null, null, null
+                      ]
 
 
 

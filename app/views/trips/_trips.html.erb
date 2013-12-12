@@ -1,4 +1,3 @@
-<table>
 <table id="trips-table" class="table table-striped" data-source="<%= trips_url(format: "json") %>">
   <thead>
     <th>Дата создания</th>
@@ -13,32 +12,17 @@
     <th>Получено бонусов</th>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
-        <% if order.natural_person.present? %>
-        <tr>
-          <td><%= order.create_date_time.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
-          <td><%= order.datetime_to_archive.in_time_zone(ActiveSupport::TimeZone.new("St. Petersburg")).strftime("%d.%m.%y %H:%M") %></td>
-            <% unless order.natural_person.nil? || current_user == order.natural_person.client %>
-                                  <td>
-              <% if order.natural_person.client.nil? %>
-  
-                <%= link_to "#{order.natural_person.full_name.encode}", new_client_path(natural_person: order.natural_person.id)  %>
-              <% else %>
-                <%= link_to  order.natural_person.client.to_s.encode,  order.natural_person.client %>
-              <% end %>
-                        </td>
-          <td><%= order.tel_call_back || order.tel %></td>
-            <% end %>
-            
-          <td><%= order.route_length %></td>
-          <td><%= order.cost %></td>
-          <td>
-              <% if order.trip.try { |t| t.bonus_point.present? }  %>
-              <%= order.trip.try(:bonus_point) %>
-              <% end %>
-          </td>
-        </tr>
-        <% end %>
-    <% end %>
+
   </tbody>
+  <tfoot>
+      <tr>
+          <th></th>
+          <th></th>
+          <th>Клиент</th>
+          <th>Телефон</th>
+          <th>Длина маршрута</th>
+          <th>Полная стоимость</th>
+          <th>Получено бонусов</th>
+      </tr>
+  </tfoot>
 </table>

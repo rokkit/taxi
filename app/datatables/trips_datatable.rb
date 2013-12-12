@@ -40,9 +40,19 @@ private
 
   def fetch_users
     #order("[dbo].[orders].[datetime_to_archive] DESC")
-    users = Orders.actual.order("#{sort_column} #{sort_direction}").page(page).per(per_page)
+    users = Orders.actual.includes(:natural_person).order("#{sort_column} #{sort_direction}").page(page).per(per_page)
     if params[:sSearch].present?
-      users = users.where("[dbo].[orders].[tel] like :search or [dbo].[orders].[tel_call_back] like :search", search: "%#{params[:sSearch]}%")
+      users = users.where("[dbo].[orders].[tel] like :search or [dbo].[orders].[tel_call_back] like :search or [dbo].[orders].[tel] like :search", search: "%#{params[:sSearch]}%")
+    end
+    if params[:sSearch_0].present?
+      left_range, right_range = params[:sSearch_0].split(params[:sRangeSeparator])
+      users = users.where("DATEADD(day,DATEDIFF(day,0, [dbo].[orders].[create_date_time]),0) >= DATEADD(day,DATEDIFF(day,0, :left_range),0)", left_range: Date.parse(left_range)) if left_range.present?
+      users = users.where("DATEADD(day,DATEDIFF(day,0, [dbo].[orders].[create_date_time]),0) <= DATEADD(day,DATEDIFF(day,0, :right_range),0)", right_range: Date.parse(right_range)) if right_range.present?
+    end
+    if params[:sSearch_1].present?
+      left_range, right_range = params[:sSearch_1].split(params[:sRangeSeparator])
+      users = users.where("[dbo].[orders].[datetime_to_archive] >= :left_range", left_range: Date.parse(left_range)) if left_range.present?
+      users = users.where("[dbo].[orders].[datetime_to_archive] <= :right_range", right_range: Date.parse(right_range)) if right_range.present?
     end
     users
   end
