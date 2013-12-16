@@ -28,7 +28,7 @@ module SMS
   
     private 
     def self.signature
-      sms_params = "pid=" + APP['smsdealer']['pid'] + "sender=" + APP['smsdealer']['sender'] + "text=" + @body + "to=" + @to
+      sms_params = "pid=" + APP['smsdealer']['pid'] + "sender=" + MessageText.first.sender.encode("utf-8") + "text=" + @body + "to=" + @to
       signature_text = APP['smsdealer']['uid'] + "delivery.sendSms" + sms_params + APP['smsdealer']['private_api_key']
       Digest::MD5.hexdigest(signature_text)
     end
