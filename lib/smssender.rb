@@ -15,7 +15,7 @@ module SMS
        { 
          'uid' => APP['smsdealer']['uid'],
          'pid' => APP['smsdealer']['pid'],
-         'sender' => APP['smsdealer']['sender'],
+         'sender' => MessageText.first.sender.encode("utf-8"),
          'to' => @to,
          'text' => @body,
          'sig' => self.signature()

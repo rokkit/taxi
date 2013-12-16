@@ -9,8 +9,10 @@ class InformMailsController < ApplicationController
   end
   
   def change_text
+ 
     @message_welcome_text = MessageText.welcome || MessageText.create(message_type: 1)
     @message_trip_text = MessageText.trip || MessageText.create(message_type: 2)
+    @message_sender = MessageText.first
     # @message_welcome_text =  MessageText.create(message_type: 1) if @message_welcome_text.nil?
     # @message_welcome_text.sms = @message_welcome_text.sms.encode!
     @message_welcome_text.sms.encode! if @message_welcome_text.sms.present?
@@ -26,6 +28,10 @@ class InformMailsController < ApplicationController
     if params[:message_trip_text].present? && m = MessageText.trip
       # m.update_attributes(params[:message_welcome_text].permit!)
       m.update_attribute :sms, params[:message_trip_text][:sms].encode("cp1251")
+    end
+    if params[:message_sender_text].present? && m = MessageText.first
+      # m.update_attributes(params[:message_welcome_text].permit!)
+      m.update_attribute :sender, params[:message_sender_text][:sender].encode("cp1251")
     end
     redirect_to change_text_inform_mails_path
   end

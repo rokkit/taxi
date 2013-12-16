@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112000254) do
+ActiveRecord::Schema.define(version: 20131216085115) do
 
   create_table "accounts", force: true do |t|
     t.decimal  "total",      precision: 18, scale: 0
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20131112000254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "sms"
+    t.string   "sender"
   end
 
   create_table "roles", force: true do |t|

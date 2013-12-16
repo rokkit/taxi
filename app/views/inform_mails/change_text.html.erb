@@ -1,3 +1,18 @@
+<h1>
+    Имя отправителя
+</h1>
+<%= semantic_form_for @message_sender, url: do_change_text_inform_mails_path, method: "get" do |f| %>
+  <%= f.inputs do %>
+    <%# f.input :content, input_html: { name: "message_welcome_text[content]" } %>
+    <%= f.input :sender, input_html: { name: "message_sender_text[sender]", rows: '5', style: "width: 400px;" } %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input, label: 'OK' %>
+  <% end %>
+<% end %>
+
+
 <h1>Приветствие</h1>
 <%= semantic_form_for @message_welcome_text, url: do_change_text_inform_mails_path, method: "get" do |f| %>
   <%= f.inputs do %>
