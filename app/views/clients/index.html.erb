@@ -10,8 +10,9 @@
 <table class="table table-striped datatable">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>Клиент</th>
+      <th>Бонусная программа</th>
+      <th>На счету</th>
       <th></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td><%= link_to client, client %></td>
         <td><%= client.bonus_program %></td>
+        <td><%= client.result_bonus %></td>
         <td><%= link_to 'Изменить', edit_client_path(client), class: "btn btn-warning entypo-pencil" %> <%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger entypo-cancel-squared" %>
         </td>
       </tr>

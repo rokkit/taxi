@@ -68,7 +68,7 @@ jQuery ->
     ).columnFilter 
           # sPlaceHolder: "head:after"
           aoColumns: [
-                        {type: "date-range" }, {type: "date-range" }, null, null, null, null, null
+                        {type: "date-range" }, {type: "date-range" }, null, null, null, null, null, null
                       ]
 
 

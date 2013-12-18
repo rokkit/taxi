@@ -27,7 +27,8 @@ private
             (order.tel_call_back || order.tel),
             order.route_length,
             order.cost,
-            order.trip.try(:bonus_point)
+            order.trip.try(:bonus_point),
+            order.trip.try { |t| t.client.try(:result_bonus) }
         ]
       
       end
