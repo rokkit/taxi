@@ -41,7 +41,7 @@ production:
   mode: dblib
   dsn: taxibonus_dsn
   host: 5.17.148.22
-  port: 49157           # Used if host present. Default is 1433.
+  port: 49158           # Used if host present. Default is 1433.
   database: bonustaxi
   username: bonus
   password: Q1m52a63
@@ -64,7 +64,7 @@ mssql:
   mode: dblib
   # dsn: taximaxima_dsn
   host: 5.17.148.22
-  port: 49157           # Used if host present. Default is 1433.
+  port: 49158          # Used if host present. Default is 1433.
   database: besttaxi
   username: bonus
   password: Q1m52a63
